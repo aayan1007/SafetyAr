@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Industrial Safety Palette -->
+    <color name="safety_primary">#FF9800</color> <!-- High-Vis Safety Amber -->
+    <color name="safety_primary_dark">#E65100</color>
+    <color name="safety_primary_container">#2A1D0D</color>
+    <color name="safety_on_primary">#FFFFFF</color>
+
+    <!-- Secondary Accents -->
+    <color name="safety_secondary">#161F30</color> <!-- Industrial Deep Slate -->
+    <color name="safety_secondary_dark">#0B0F19</color>
+    <color name="safety_secondary_container">#1E293B</color>
+    <color name="safety_on_secondary">#F8FAFC</color>
+
+    <!-- Hazard Indicators -->
+    <color name="hazard_red">#FF1744</color> <!-- Critical Hazard (e.g. Methane Gas, Roof Sag) -->
+    <color name="hazard_red_soft">#2B1317</color>
+    <color name="hazard_orange">#FF9800</color> <!-- Warning (e.g. Pinch Points, Molten Area) -->
+    <color name="hazard_orange_soft">#2A1D0D</color>
+    <color name="hazard_yellow">#FFD600</color> <!-- Caution / PPE Check -->
+    <color name="hazard_yellow_soft">#2A270D</color>
+    <color name="hazard_green">#10B981</color> <!-- Safe / SOP Compliant -->
+    <color name="hazard_green_soft">#0E2A1E</color>
+    <color name="hazard_blue">#00E5FF</color> <!-- Mining Cyan / AR Telemetry -->
+    <color name="hazard_blue_soft">#0E262B</color>
+
+    <!-- Surface and Backgrounds -->
+    <color name="bg_dark">#0B0F19</color>
+    <color name="surface_card">#161F30</color>
+    <color name="surface_card_light">#1E293B</color>
+    <color name="border_subtle">#26354D</color>
+    <color name="border_light">#334155</color>
+
+    <!-- Text -->
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_on_dark">#F8FAFC</color>
+    <color name="text_on_dark_muted">#94A3B8</color>
+
+    <!-- Overlay & AR HUD -->
+    <color name="ar_hud_background">#E60B0F19</color>
+    <color name="ar_target_reticle">#00E5FF</color>
+    <color name="ar_plane_detected">#4000E5FF</color>
+    <color name="safety_on_dark">#FFFFFF</color>
+    <color name="text_dark_primary">#F8FAFC</color>
+</resources>
+

@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafetyAR Enterprise Admin Portal - Government of Jharkhand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0A0F1D;
+      --surface-card: #111827;
+      --surface-card-hover: #162032;
+      --surface-border: #1F2937;
+      --surface-border-active: #374151;
+      --primary: #F59E0B;
+      --primary-hover: #D97706;
+      --green: #10B981;
+      --red: #EF4444;
+      --amber: #F59E0B;
+      --blue: #3B82F6;
+      --purple: #8B5CF6;
+      --text-main: #F9FAFB;
+      --text-muted: #9CA3AF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; padding: 20px; }
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--surface-border);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .brand-badge { background: #FEF3C7; color: #92400E; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+    .brand-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    
+    /* Role Selector */
+    .role-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      padding: 6px;
+      border-radius: 12px;
+    }
+    .role-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .role-btn.active {
+      background: var(--primary);
+      color: #000;
+      font-weight: 800;
+    }
+    .role-info-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .status-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* Role Capability Callout */
+    .role-callout {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 12px;
+      color: #FCD34D;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    /* 8-Tab Navigation */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--surface-border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-item {
+      padding: 12px 18px;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-item:hover { color: var(--text-main); }
+    .tab-item.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Page Views */
+    .page-view { display: none; animation: fadeIn 0.25s; }
+    .page-view.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* KPI Cards */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .kpi-card { background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 14px; padding: 20px; }
+    .kpi-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .kpi-value { font-size: 30px; font-weight: 800; margin-top: 8px; color: var(--text-main); }
+    .kpi-trend { font-size: 12px; margin-top: 6px; font-weight: 500; }
+    .trend-good { color: var(--green); }
+    .trend-warn { color: var(--amber); }
+
+    /* Section Cards */
+    .card { background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 16px; padding: 22px; margin-bottom: 24px; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+    .card-title { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+
+    /* Tables */
+    .table-responsive { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th { padding: 12px 14px; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--surface-border); }
+    td { padding: 14px; border-bottom: 1px solid #1F2937; color: var(--text-main); vertical-align: middle; }
+    tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    /* Badges */
+    .badge { padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; }
+    .badge-compliant { background: rgba(16, 185, 129, 0.15); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-refresher { background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-revoked { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-high { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; }
+    .badge-sector { background: #1F2937; color: #E5E7EB; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+
+    /* Buttons */
+    .btn { background: var(--primary); color: #000; border: none; font-weight: 700; padding: 10px 18px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 12px; }
+    .btn:hover { background: var(--primary-hover); }
+    .btn-secondary { background: #1F2937; color: #F9FAFB; border: 1px solid #374151; }
+    .btn-secondary:hover { background: #374151; }
+    .btn-danger { background: rgba(239, 68, 68, 0.2); color: var(--red); border: 1px solid var(--red); }
+    .btn-danger:hover { background: var(--red); color: #FFF; }
+    .btn-sm { padding: 6px 12px; font-size: 11px; }
+
+    /* Forms */
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+    .form-control { width: 100%; background: #1F2937; border: 1px solid #374151; border-radius: 8px; padding: 10px 14px; color: var(--text-main); font-size: 13px; outline: none; }
+    .form-control:focus { border-color: var(--primary); }
+
+    /* Filter Bar */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+    .filter-pill { background: #1F2937; border: 1px solid #374151; color: var(--text-muted); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .filter-pill.active { background: var(--primary); color: #000; font-weight: 700; border-color: var(--primary); }
+
+    /* Verification Workbench */
+    .verifier-input-group { display: flex; gap: 10px; margin-bottom: 14px; }
+    .demo-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+    .chip { padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid transparent; transition: 0.15s; }
+    .chip-valid { background: rgba(16, 185, 129, 0.15); color: var(--green); border-color: var(--green); }
+    .chip-expired { background: rgba(245, 158, 11, 0.15); color: var(--amber); border-color: var(--amber); }
+    .chip-revoked { background: rgba(239, 68, 68, 0.15); color: var(--red); border-color: var(--red); }
+    .chip-notfound { background: rgba(156, 163, 175, 0.15); color: #D1D5DB; border-color: #4B5563; }
+    .chip:hover { transform: translateY(-1px); }
+
+    .result-box { display: none; border-radius: 12px; padding: 18px; margin-top: 14px; border: 1.5px solid var(--surface-border); animation: fadeIn 0.3s; }
+    .result-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .result-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; }
+
+    /* Sector Grid */
+    .sector-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .sector-card { background: #131D31; border: 1px solid #1E293B; border-radius: 12px; padding: 18px; }
+    .sector-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    .progress-bar-bg { background: #1F2937; border-radius: 6px; height: 8px; overflow: hidden; margin: 10px 0; }
+    .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 6px; transition: width 0.4s; }
+
+    /* Modal */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; align-items: center; justify-content: center; }
+    .modal-overlay.active { display: flex; }
+    .modal-box { background: var(--surface-card); border: 1px solid var(--surface-border); border-radius: 16px; padding: 24px; max-width: 500px; width: 90%; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div>
+      <div class="brand-title">
+        <span>🛡️ SafetyAR Central Admin</span>
+        <span class="brand-badge">SIH 2026</span>
+        <span style="font-size: 12px; background: rgba(59, 130, 246, 0.2); color: #93C5FD; padding: 3px 8px; border-radius: 6px;">DGMS Compliant</span>
+      </div>
+      <div class="brand-subtitle">Government of Jharkhand &bull; Industrial Safety Council &bull; Dual-Mode Offline-First Sync</div>
+    </div>
+
+    <!-- Role Switcher -->
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <div class="role-bar">
+        <span style="font-size: 11px; color: var(--text-muted); margin-right: 4px; font-weight: 700;">ROLE:</span>
+        <button class="role-btn active" onclick="setRole('SUPER_ADMIN')">👑 Super Admin</button>
+        <button class="role-btn" onclick="setRole('SAFETY_OFFICER')">🛡️ Safety Officer</button>
+        <button class="role-btn" onclick="setRole('TRAINER')">👨‍🏫 Trainer</button>
+        <button class="role-btn" onclick="setRole('SUPERVISOR')">👷 Supervisor</button>
+      </div>
+
+      <div class="role-info-pill">
+        <span class="status-dot"></span>
+        <span id="sysStatusText">API Connected &bull; Local Store</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role Capability Callout Banner -->
+  <div class="role-callout" id="roleBanner">
+    <div>
+      <strong id="roleBannerTitle">Active Role: Super Admin (DGMS Central HQ)</strong>
+      <span style="margin-left: 8px; color: var(--text-muted);" id="roleBannerDesc">Full access to 8 operational views, certificate revocation, worker dispatch, and database re-seeding.</span>
+    </div>
+    <span class="badge badge-compliant" style="font-size: 11px;" id="roleAccessBadge">FULL ACCESS</span>
+  </div>
+
+  <!-- 8-Tab Navigation -->
+  <nav class="tabs-nav">
+    <button class="tab-item active" onclick="switchTab('tabDashboard')">📊 Executive Dashboard</button>
+    <button class="tab-item" onclick="switchTab('tabWorkers')">👷 Workers &amp; Roster</button>
+    <button class="tab-item" onclick="switchTab('tabTraining')">📚 Training &amp; Modules</button>
+    <button class="tab-item" onclick="switchTab('tabAssessments')">📝 Assessments &amp; Audits</button>
+    <button class="tab-item" onclick="switchTab('tabCertificates')">📜 Certificates &amp; QR Workbench</button>
+    <button class="tab-item" onclick="switchTab('tabCompliance')">🛡️ DGMS Safety Compliance</button>
+    <button class="tab-item" onclick="switchTab('tabReports')">📈 Reports &amp; Export</button>
+    <button class="tab-item" onclick="switchTab('tabSettings')">⚙️ System Settings &amp; Sync</button>
+  </nav>
+
+  <!-- ==================== TAB 1: EXECUTIVE DASHBOARD ==================== -->
+  <div id="tabDashboard" class="page-view active">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Registered Workers</div>
+        <div class="kpi-value" id="kpiWorkers">4</div>
+        <div class="kpi-trend trend-good">&uarr; 100% Jharkhand High-Risk Roster</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Compliant &amp; Certified</div>
+        <div class="kpi-value" id="kpiCertified" style="color: var(--green);">3</div>
+        <div class="kpi-trend trend-good">&uarr; 75.0% Pass Standard</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">DGMS Compliance Index</div>
+        <div class="kpi-value" id="kpiComplianceRate" style="color: var(--primary);">94.2%</div>
+        <div class="kpi-trend trend-good">&uarr; Circular 3 of 2019 Verified</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Critical Violations Prevented</div>
+        <div class="kpi-value" id="kpiViolationsBlocked" style="color: #60A5FA;">18</div>
+        <div class="kpi-trend trend-good">&uarr; Zero Methane Ignitions</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">WorkManager Sync Queue</div>
+        <div class="kpi-value" id="kpiSyncQueue">0</div>
+        <div class="kpi-trend trend-good">&bull; All Edge Terminals Synced</div>
+      </div>
+    </div>
+
+    <!-- Sector Compliance Cards -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🏭 Priority Industrial Sectors Compliance (Jharkhand)</div>
+        <span style="font-size: 12px; color: var(--text-muted);">DGMS Eastern &amp; Northern Inspection Zones</span>
+      </div>
+      <div class="sector-grid" id="sectorCardsGrid">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- Quick Demonstration Highlights -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🚀 SIH Demonstration Quick Highlights</div>
+        <span class="badge badge-compliant">STANDALONE OFFLINE READY</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; font-size: 13px;">
+        <div style="background: #131D31; padding: 14px; border-radius: 10px; border-left: 3px solid var(--primary);">
+          <strong>Demo Worker: Ramesh Soren</strong><br>
+          <span style="color: var(--text-muted);">ID: WRK-JH-COAL-0891 &bull; Moonidih Underground Project Seam XVI &bull; Fire &amp; Gas AR Ready</span>
+        </div>
+        <div style="background: #131D31; padding: 14px; border-radius: 10px; border-left: 3px solid var(--green);">
+          <strong>AR Core + Interactive Fallback</strong><br>
+          <span style="color: var(--text-muted);">Runs seamlessly on ARCore-certified devices and gracefully falls back on standard Android phones.</span>
+        </div>
+        <div style="background: #131D31; padding: 14px; border-radius: 10px; border-left: 3px solid var(--blue);">
+          <strong>Offline-First Room DB + Sync</strong><br>
+          <span style="color: var(--text-muted);">15 relational Room tables store training records locally. WorkManager automatically syncs when online.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 2: WORKERS & ROSTER ==================== -->
+  <div id="tabWorkers" class="page-view">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">👷 Workforce Management &amp; Orientation Tracking</div>
+        <button class="btn btn-sm" onclick="openModal('workerModal')">+ Register New Worker</button>
+      </div>
+
+      <!-- Sector Filter Pills -->
+      <div class="filter-bar">
+        <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;">FILTER BY SECTOR:</span>
+        <div class="filter-pill active" onclick="filterWorkers('ALL', this)">All Sectors</div>
+        <div class="filter-pill" onclick="filterWorkers('COAL_MINING', this)">Coal Mining (BCCL)</div>
+        <div class="filter-pill" onclick="filterWorkers('STEEL_MANUFACTURING', this)">Steel (Tata Steel)</div>
+        <div class="filter-pill" onclick="filterWorkers('MICA_PROCESSING', this)">Mica (JSMDC)</div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Worker ID</th>
+              <th>Full Name &amp; Trade</th>
+              <th>Enterprise / Mine Site</th>
+              <th>Sector</th>
+              <th>30-Day Orientation</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="workerTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 3: TRAINING & MODULES ==================== -->
+  <div id="tabTraining" class="page-view">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📚 Industrial Training Modules &amp; Microlearning Curriculum</div>
+        <button class="btn btn-sm" onclick="openModal('assignModal')">+ Assign Module to Worker</button>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Module ID</th>
+              <th>Title &amp; Scope</th>
+              <th>Sector</th>
+              <th>DGMS / IS Standard</th>
+              <th>Duration</th>
+              <th>Pass Threshold</th>
+              <th>AR Scenario</th>
+            </tr>
+          </thead>
+          <tbody id="modulesTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Active Training Assignments Table -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📋 Active Training Assignments &amp; Progress Matrix</div>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Assignment ID</th>
+              <th>Worker</th>
+              <th>Module</th>
+              <th>Assigned By</th>
+              <th>Priority</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="assignmentTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 4: ASSESSMENTS & AUDITS ==================== -->
+  <div id="tabAssessments" class="page-view">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📝 Vocational Assessment Results &amp; Safety Mistakes Ledger</div>
+        <span style="font-size: 12px; color: var(--text-muted);">Zero-Tolerance Critical Safety Policy Active</span>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Attempt ID</th>
+              <th>Worker</th>
+              <th>Module</th>
+              <th>Score</th>
+              <th>Hazards Neutralized</th>
+              <th>Critical Mistakes</th>
+              <th>Result</th>
+              <th>Date &amp; Duration</th>
+            </tr>
+          </thead>
+          <tbody id="assessmentTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 5: CERTIFICATES & QR WORKBENCH ==================== -->
+  <div id="tabCertificates" class="page-view">
+    <!-- QR Verifier Workbench -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🔍 Digital Certificate QR Verification Workbench</div>
+        <span style="font-size: 12px; color: var(--text-muted);">SHA-256 Cryptographic Hash Validator</span>
+      </div>
+
+      <div class="verifier-input-group">
+        <input type="text" id="verifierInput" class="form-control" placeholder="Scan or enter Certificate ID (e.g. SAFETYAR-JH-2026-000001)">
+        <button class="btn" onclick="verifyInput()">Verify Pass</button>
+      </div>
+
+      <div class="demo-chips">
+        <span style="font-size: 11px; color: var(--text-muted); font-weight: 700;">SIH DEMO TEST CHIPS:</span>
+        <button class="chip chip-valid" onclick="simulateTest('SAFETYAR-JH-2026-000001')">&bull; VALID (Ramesh Soren)</button>
+        <button class="chip chip-expired" onclick="simulateTest('SAFETYAR-JH-2026-000002')">&bull; EXPIRED (Arjun Mahto)</button>
+        <button class="chip chip-revoked" onclick="simulateTest('SAFETYAR-JH-2026-000003')">&bull; REVOKED (Sunita Murmu)</button>
+        <button class="chip chip-notfound" onclick="simulateTest('SAFETYAR-FAKE-999999')">&bull; NOT FOUND (Counterfeit)</button>
+      </div>
+
+      <div id="resultBox" class="result-box">
+        <span id="resultBadge" class="result-badge">STATUS</span>
+        <div id="resultMsg" style="font-size: 15px; font-weight: 700; margin-bottom: 6px;"></div>
+        <div id="resultDetail" style="font-size: 12px; color: var(--text-muted); line-height: 1.5;"></div>
+        <div id="resultMeta" class="result-meta-grid"></div>
+      </div>
+    </div>
+
+    <!-- Active Certificates Registry -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📜 Central Certificate Registry</div>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Certificate ID</th>
+              <th>Worker Name</th>
+              <th>Enterprise</th>
+              <th>Module</th>
+              <th>Score</th>
+              <th>Valid Until</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="certTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 6: DGMS SAFETY COMPLIANCE ==================== -->
+  <div id="tabCompliance" class="page-view">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🛡️ DGMS Statutory Standards Compliance Matrix (Jharkhand)</div>
+        <span class="badge badge-compliant">100% REGULATORY AUDIT PASS</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+        <div style="background: #131D31; padding: 18px; border-radius: 12px; border: 1px solid #1E293B;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong>DGMS Coal Mines Rule 115</strong>
+            <span class="badge badge-compliant">100% AUDITED</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Mandates automated methanometer continuous testing. Power cut-off and immediate evacuation enforced at 1.25% CH4 concentration.</p>
+        </div>
+
+        <div style="background: #131D31; padding: 18px; border-radius: 12px; border: 1px solid #1E293B;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong>DGMS Circular 3 of 2019</strong>
+            <span class="badge badge-compliant">100% AUDITED</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Sounding the roof with a 1.8m steel testing bar. Hydraulic prop wedging with wooden lid cushions within 1.2m face perimeter.</p>
+        </div>
+
+        <div style="background: #131D31; padding: 18px; border-radius: 12px; border: 1px solid #1E293B;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong>DGMS Confined Space S54</strong>
+            <span class="badge badge-compliant">100% AUDITED</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Strict Form-IV Entry Permit protocol. 4-Gas calibration, SCBA positive-pressure donning, and standby buddy communication line.</p>
+        </div>
+
+        <div style="background: #131D31; padding: 18px; border-radius: 12px; border: 1px solid #1E293B;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong>IS-14489:2018 (Steel Works)</strong>
+            <span class="badge badge-compliant">100% AUDITED</span>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">Blast furnace taphole splash perimeter. Mandatory aluminized heat reflective suits, face shields, and moisture-free slag runners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 7: REPORTS & EXPORT ==================== -->
+  <div id="tabReports" class="page-view">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📈 Industrial Safety Reports &amp; Regulatory Audit Export</div>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Generate and export official compliance dossiers for submission to the Directorate General of Mines Safety (DGMS) Eastern Zone and State Inspectorate.</p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+        <button class="btn" onclick="exportCSV()">&darr; Export Compliance CSV</button>
+        <button class="btn btn-secondary" onclick="exportJSON()">&darr; Export Worker Audit JSON</button>
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ Print / Save PDF Dossier</button>
+      </div>
+
+      <div style="background: #131D31; padding: 20px; border-radius: 12px; border: 1px solid #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #D1D5DB; line-height: 1.7;" id="reportPreview">
+        ============================================================<br>
+        STATE INDUSTRIAL SAFETY COUNCIL (JISC) - DHANBAD DGMS REGISTRY<br>
+        MONTHLY VOCATIONAL AR COMPLIANCE AUDIT DOSSIER<br>
+        Date Generated: 14 Sep 2026 &bull; Jurisdiction: Jharkhand<br>
+        ============================================================<br>
+        Total Workers Enrolled: 4<br>
+        Active Certified Passes: 3 (75.0%)<br>
+        High-Risk Methane/Fire Training Pass Rate: 94.0%<br>
+        Zero-Tolerance Life-Safety Compliance: 100% Achieved<br>
+        Fatalities / Lost-Time Injuries: 0<br>
+        ------------------------------------------------------------<br>
+        Audit Verified by: B. N. Singh (DGMS Overman &amp; Safety Inspector)
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 8: SYSTEM SETTINGS & SYNC ==================== -->
+  <div id="tabSettings" class="page-view">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">⚙️ Offline-First Architecture &amp; Sync Logs</div>
+        <span style="font-size: 12px; color: var(--text-muted);">Android WorkManager &bull; SQLite Room &bull; REST API</span>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Log ID</th>
+              <th>Worker ID</th>
+              <th>Device Fingerprint</th>
+              <th>Records Uploaded</th>
+              <th>Sync Status</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="syncLogBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Administrative Controls -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🔧 Admin Maintenance &amp; Demonstration Controls</div>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <button class="btn btn-danger" onclick="resetDatabase()">⚠️ Reset / Re-Seed Demonstration Database</button>
+        <button class="btn btn-secondary" onclick="loadAllData()">🔄 Force Refresh All Data</button>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">Resetting restores the database to the initial SIH 2026 demonstration seed with Ramesh Soren (WRK-JH-COAL-0891) as primary miner.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODALS ==================== -->
+<!-- Register Worker Modal -->
+<div class="modal-overlay" id="workerModal">
+  <div class="modal-box">
+    <div class="card-title" style="margin-bottom: 14px;">Register Industrial Worker</div>
+    <div class="form-group">
+      <label class="form-label">Worker ID</label>
+      <input type="text" id="newWorkerId" class="form-control" placeholder="e.g. JH-MINE-005">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Full Name</label>
+      <input type="text" id="newWorkerName" class="form-control" placeholder="e.g. Rajesh Kumar">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Sector</label>
+      <select id="newWorkerSector" class="form-control">
+        <option value="COAL_MINING">Coal Mining (BCCL)</option>
+        <option value="STEEL_MANUFACTURING">Steel Manufacturing (Tata Steel)</option>
+        <option value="MICA_PROCESSING">Mica Processing (JSMDC)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Trade / Designation</label>
+      <input type="text" id="newWorkerTrade" class="form-control" placeholder="e.g. Underground Roof Bolter">
+    </div>
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+      <button class="btn btn-secondary" onclick="closeModal('workerModal')">Cancel</button>
+      <button class="btn" onclick="saveWorker()">Register Worker</button>
+    </div>
+  </div>
+</div>
+
+<!-- Assign Module Modal -->
+<div class="modal-overlay" id="assignModal">
+  <div class="modal-box">
+    <div class="card-title" style="margin-bottom: 14px;">Assign Training Module</div>
+    <div class="form-group">
+      <label class="form-label">Select Worker</label>
+      <select id="assignWorkerSelect" class="form-control"></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Select Module</label>
+      <select id="assignModuleSelect" class="form-control">
+        <option value="MOD-FIRE-01">MOD-FIRE-01: Fire &amp; Explosion Emergency Response</option>
+        <option value="MOD-GAS-01">MOD-GAS-01: Gas Leak &amp; Confined Space Safety</option>
+        <option value="MOD-COAL-01">MOD-COAL-01: Roof Strata Stability &amp; Methane Detection</option>
+        <option value="MOD-STEEL-01">MOD-STEEL-01: Blast Furnace Tapping &amp; Molten Metal Splash</option>
+        <option value="MOD-MICA-01">MOD-MICA-01: Respirable Mica Dust &amp; Silicosis Prevention</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Priority</label>
+      <select id="assignPriority" class="form-control">
+        <option value="HIGH">HIGH (Mandatory Before Next Shift)</option>
+        <option value="CRITICAL">CRITICAL (Zero-Tolerance Safety Audit)</option>
+        <option value="MEDIUM">MEDIUM (Annual Refresher)</option>
+      </select>
+    </div>
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+      <button class="btn btn-secondary" onclick="closeModal('assignModal')">Cancel</button>
+      <button class="btn" onclick="saveAssignment()">Dispatch Assignment</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentRole = 'SUPER_ADMIN';
+  let cachedWorkers = [];
+  let cachedModules = [];
+  let cachedAssignments = [];
+  let cachedCertificates = [];
+  let cachedAssessments = [];
+
+  const ROLE_CAPABILITIES = {
+    'SUPER_ADMIN': {
+      title: 'Active Role: Super Admin (DGMS Central HQ)',
+      desc: 'Full access to 8 operational views, certificate revocation, worker dispatch, and database re-seeding.',
+      badge: 'FULL ACCESS'
+    },
+    'SAFETY_OFFICER': {
+      title: 'Active Role: Safety Officer (Jharkhand Inspectorate)',
+      desc: 'Authorized to conduct safety compliance audits, inspect assessments, and revoke non-compliant certificates.',
+      badge: 'COMPLIANCE AUDITOR'
+    },
+    'TRAINER': {
+      title: 'Active Role: Vocational AR Trainer (Safety Training Wing)',
+      desc: 'Authorized to create training curriculum assignments and review worker pass/fail scores.',
+      badge: 'TRAINING DISPATCHER'
+    },
+    'SUPERVISOR': {
+      title: 'Active Role: Shift Mine Supervisor (Moonidih Underground Project)',
+      desc: 'Roster monitoring, 30-day orientation day inspection, and shift-level compliance verification.',
+      badge: 'FIELD SUPERVISOR'
+    }
+  };
+
+  function setRole(role) {
+    currentRole = role;
+    document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+
+    const cap = ROLE_CAPABILITIES[role] || ROLE_CAPABILITIES['SUPER_ADMIN'];
+    document.getElementById('roleBannerTitle').innerText = cap.title;
+    document.getElementById('roleBannerDesc').innerText = cap.desc;
+    document.getElementById('roleAccessBadge').innerText = cap.badge;
+  }
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+    
+    const target = document.getElementById(tabId);
+    if (target) target.classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  function openModal(id) {
+    const m = document.getElementById(id);
+    if (m) m.classList.add('active');
+  }
+
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    if (m) m.classList.remove('active');
+  }
+
+  async function loadAllData() {
+    try {
+      // 1. Analytics & KPIs
+      const kpiRes = await fetch('/api/v1/analytics/overview');
+      if (kpiRes.ok) {
+        const kpiData = await kpiRes.json();
+        if (kpiData.success && kpiData.data) {
+          const d = kpiData.data;
+          document.getElementById('kpiWorkers').innerText = d.totalWorkers || 4;
+          document.getElementById('kpiCertified').innerText = d.certifiedWorkers || 3;
+          document.getElementById('kpiComplianceRate').innerText = (d.overallComplianceRate || 94.2) + '%';
+          document.getElementById('kpiViolationsBlocked').innerText = d.criticalMistakesPrevented || 18;
+          document.getElementById('kpiSyncQueue').innerText = d.unsyncedRecords || 0;
+        }
+      }
+
+      // 2. Sector Cards
+      const secRes = await fetch('/api/v1/analytics/sectors');
+      if (secRes.ok) {
+        const secData = await secRes.json();
+        if (secData.success && secData.data) {
+          const grid = document.getElementById('sectorCardsGrid');
+          grid.innerHTML = '';
+          secData.data.forEach(s => {
+            const card = document.createElement('div');
+            card.className = 'sector-card';
+            card.innerHTML = `
+              <div class="sector-title">
+                <span>${s.displayName}</span>
+                <span style="font-size: 12px; color: var(--primary); font-weight: 700;">${s.complianceRate}% Certified</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: ${s.complianceRate}%;"></div>
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 8px;">
+                <span>Total Roster: ${s.totalWorkers}</span>
+                <span>Active Safety Passes: ${s.activeCertificates}</span>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        }
+      }
+
+      // 3. Workers
+      const wrkRes = await fetch('/api/v1/workers');
+      if (wrkRes.ok) {
+        const wrkData = await wrkRes.json();
+        if (wrkData.success && wrkData.data) {
+          cachedWorkers = wrkData.data;
+          renderWorkersTable(cachedWorkers);
+          populateWorkerDropdown(cachedWorkers);
+        }
+      }
+
+      // 4. Modules
+      const modRes = await fetch('/api/v1/training/modules');
+      if (modRes.ok) {
+        const modData = await modRes.json();
+        if (modData.success && modData.data) {
+          cachedModules = modData.data;
+          renderModulesTable(cachedModules);
+        }
+      }
+
+      // 5. Certificates
+      const certRes = await fetch('/api/v1/certificates');
+      if (certRes.ok) {
+        const certData = await certRes.json();
+        if (certData.success && certData.data) {
+          cachedCertificates = certData.data;
+          renderCertTable(cachedCertificates);
+        }
+      }
+
+      // 6. Assessments
+      const assRes = await fetch('/api/v1/assessments');
+      if (assRes.ok) {
+        const assData = await assRes.json();
+        if (assData.success && assData.data) {
+          cachedAssessments = assData.data;
+          renderAssessmentsTable(cachedAssessments);
+        }
+      }
+
+      // 7. Sync Logs
+      const syncRes = await fetch('/api/v1/sync/logs');
+      if (syncRes.ok) {
+        const syncData = await syncRes.json();
+        if (syncData.success && syncData.data) {
+          renderSyncLogs(syncData.data);
+        }
+      }
+
+    } catch (e) {
+      console.warn('Data load warning:', e);
+    }
+  }
+
+  function renderWorkersTable(workers) {
+    const tbody = document.getElementById('workerTableBody');
+    tbody.innerHTML = '';
+    workers.forEach(w => {
+      let statusBadge = `<span class="badge badge-compliant">COMPLIANT</span>`;
+      if (w.complianceStatus === 'NEEDS_REFRESHER') {
+        statusBadge = `<span class="badge badge-refresher">REFRESHER DUE</span>`;
+      } else if (w.complianceStatus === 'SUSPENDED_REVOKED') {
+        statusBadge = `<span class="badge badge-revoked">SUSPENDED</span>`;
+      }
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--primary);">${w.workerId}</td>
+        <td>
+          <div style="font-weight: 700;">${w.fullName}</div>
+          <div style="font-size: 11px; color: var(--text-muted);">${w.designation}</div>
+        </td>
+        <td>${w.enterprise}</td>
+        <td><span class="badge badge-sector">${w.sector}</span></td>
+        <td>
+          <div style="font-size: 12px; font-weight: 600;">Day ${w.orientationDay} / 30</div>
+          <div style="font-size: 11px; color: var(--text-muted);">${Math.round((w.orientationDay/30)*100)}% Completed</div>
+        </td>
+        <td>${statusBadge}</td>
+        <td>
+          <button class="btn btn-secondary btn-sm" onclick="quickAssign('${w.workerId}')">Assign</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function filterWorkers(sector, el) {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    if (el) el.classList.add('active');
+
+    if (sector === 'ALL') {
+      renderWorkersTable(cachedWorkers);
+    } else {
+      const filtered = cachedWorkers.filter(w => w.sector === sector);
+      renderWorkersTable(filtered);
+    }
+  }
+
+  function populateWorkerDropdown(workers) {
+    const sel = document.getElementById('assignWorkerSelect');
+    sel.innerHTML = '';
+    workers.forEach(w => {
+      const opt = document.createElement('option');
+      opt.value = w.workerId;
+      opt.innerText = `${w.workerId} - ${w.fullName} (${w.enterprise})`;
+      sel.appendChild(opt);
+    });
+  }
+
+  function renderModulesTable(modules) {
+    const tbody = document.getElementById('modulesTableBody');
+    tbody.innerHTML = '';
+    modules.forEach(m => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--primary);">${m.moduleId}</td>
+        <td>
+          <div style="font-weight: 700;">${m.title}</div>
+          <div style="font-size: 11px; color: var(--text-muted);">${m.description}</div>
+        </td>
+        <td><span class="badge badge-sector">${m.sector}</span></td>
+        <td><span class="badge badge-compliant">${m.standardCode}</span></td>
+        <td>${m.estimatedMinutes} mins</td>
+        <td>${m.passThreshold}%</td>
+        <td><span class="badge" style="background: rgba(59, 130, 246, 0.2); color: #93C5FD;">ARCore Ready</span></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderCertTable(certs) {
+    const tbody = document.getElementById('certTableBody');
+    tbody.innerHTML = '';
+    certs.forEach(c => {
+      let badge = `<span class="badge badge-compliant">VALID</span>`;
+      let revokeBtn = `<button class="btn btn-danger btn-sm" onclick="revokeCertificate('${c.certificateId}')">Revoke</button>`;
+      
+      if (c.status === 'EXPIRED') {
+        badge = `<span class="badge badge-refresher">EXPIRED</span>`;
+        revokeBtn = `<span style="font-size: 11px; color: var(--text-muted);">Expired</span>`;
+      } else if (c.status === 'REVOKED') {
+        badge = `<span class="badge badge-revoked">REVOKED</span>`;
+        revokeBtn = `<span style="font-size: 11px; color: var(--red);">Revoked</span>`;
+      }
+
+      const expDate = new Date(c.expiresTimestamp).toLocaleDateString('en-GB');
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700;">${c.certificateId}</td>
+        <td><strong>${c.workerName}</strong> (${c.workerId})</td>
+        <td>${c.organization}</td>
+        <td>${c.trainingModule}</td>
+        <td style="font-weight: 700; color: var(--green);">${c.score}%</td>
+        <td>${expDate}</td>
+        <td>${badge}</td>
+        <td>${revokeBtn}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderAssessmentsTable(assessments) {
+    const tbody = document.getElementById('assessmentTableBody');
+    tbody.innerHTML = '';
+    assessments.forEach(a => {
+      const badge = a.isPassed ? 
+        `<span class="badge badge-compliant">PASSED &check;</span>` : 
+        `<span class="badge badge-revoked">FAILED &cross;</span>`;
+      const dateStr = new Date(a.timestamp).toLocaleDateString('en-GB');
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">${a.attemptId}</td>
+        <td><strong>${a.workerId}</strong></td>
+        <td>${a.moduleId}</td>
+        <td style="font-weight: 700; color: var(--primary);">${a.scoreObtained}%</td>
+        <td>${a.correctCount} / ${(a.correctCount + a.incorrectCount)}</td>
+        <td style="color: ${a.criticalMistakesCount > 0 ? 'var(--red)' : 'var(--green)'}; font-weight: 700;">${a.criticalMistakesCount}</td>
+        <td>${badge}</td>
+        <td>${dateStr} (${a.durationSeconds}s)</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderSyncLogs(logs) {
+    const tbody = document.getElementById('syncLogBody');
+    tbody.innerHTML = '';
+    logs.forEach(l => {
+      const dateStr = new Date(l.timestamp).toLocaleTimeString();
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="font-family: 'JetBrains Mono', monospace; font-size: 11px;">${l.logId}</td>
+        <td>${l.workerId}</td>
+        <td>${l.deviceId}</td>
+        <td>${l.recordsUploaded} Records</td>
+        <td><span class="badge badge-compliant">${l.status}</span></td>
+        <td style="font-size: 11px; color: var(--text-muted);">${dateStr}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function simulateTest(certId) {
+    document.getElementById('verifierInput').value = certId;
+    verifyInput();
+  }
+
+  async function verifyInput() {
+    const input = document.getElementById('verifierInput').value.trim();
+    if (!input) return;
+
+    try {
+      const res = await fetch('/api/v1/certificates/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: input })
+      });
+      const data = await res.json();
+      renderVerificationHUD(data);
+    } catch (e) {
+      alert('Verification network error: ' + e.message);
+    }
+  }
+
+  function renderVerificationHUD(result) {
+    const box = document.getElementById('resultBox');
+    const badge = document.getElementById('resultBadge');
+    const msg = document.getElementById('resultMsg');
+    const detail = document.getElementById('resultDetail');
+    const meta = document.getElementById('resultMeta');
+
+    box.style.display = 'block';
+
+    const status = result.verificationStatus || 'NOT_FOUND';
+    badge.innerText = `STATUS: ${status}`;
+    msg.innerText = result.message;
+    detail.innerText = result.complianceNote;
+
+    if (status === 'VALID') {
+      box.style.borderColor = 'var(--green)';
+      box.style.background = 'rgba(16, 185, 129, 0.05)';
+      badge.style.background = 'rgba(16, 185, 129, 0.2)';
+      badge.style.color = 'var(--green)';
+    } else if (status === 'EXPIRED') {
+      box.style.borderColor = 'var(--amber)';
+      box.style.background = 'rgba(245, 158, 11, 0.05)';
+      badge.style.background = 'rgba(245, 158, 11, 0.2)';
+      badge.style.color = 'var(--amber)';
+    } else if (status === 'REVOKED') {
+      box.style.borderColor = 'var(--red)';
+      box.style.background = 'rgba(239, 68, 68, 0.08)';
+      badge.style.background = 'rgba(239, 68, 68, 0.2)';
+      badge.style.color = 'var(--red)';
+    } else {
+      box.style.borderColor = '#4B5563';
+      box.style.background = 'rgba(75, 85, 99, 0.08)';
+      badge.style.background = 'rgba(75, 85, 99, 0.3)';
+      badge.style.color = '#E5E7EB';
+    }
+
+    if (result.data) {
+      const c = result.data;
+      const issueDate = new Date(c.issuedTimestamp).toLocaleDateString('en-GB');
+      const expireDate = new Date(c.expiresTimestamp).toLocaleDateString('en-GB');
+      meta.innerHTML = `
+        <div><strong>Worker:</strong> ${c.workerName} (${c.workerId})</div>
+        <div><strong>Organization:</strong> ${c.organization}</div>
+        <div><strong>Module:</strong> ${c.trainingModule}</div>
+        <div><strong>Score:</strong> ${c.score}%</div>
+        <div><strong>Issued:</strong> ${issueDate}</div>
+        <div><strong>Expires:</strong> ${expireDate}</div>
+      `;
+    } else {
+      meta.innerHTML = `<div><strong>Registry Status:</strong> Unregistered in Central DGMS Security Server</div>`;
+    }
+  }
+
+  async function revokeCertificate(certId) {
+    if (!confirm(`Are you sure you want to revoke certificate ${certId}?`)) return;
+    try {
+      const res = await fetch(`/api/v1/certificates/${certId}/revoke`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason: 'Revoked by Safety Officer during industrial safety audit' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert('Certificate revoked successfully.');
+        loadAllData();
+      } else {
+        alert('Failed to revoke: ' + data.message);
+      }
+    } catch (e) {
+      alert('Error revoking certificate: ' + e.message);
+    }
+  }
+
+  function quickAssign(workerId) {
+    document.getElementById('assignWorkerSelect').value = workerId;
+    openModal('assignModal');
+  }
+
+  async function saveAssignment() {
+    const workerId = document.getElementById('assignWorkerSelect').value;
+    const moduleId = document.getElementById('assignModuleSelect').value;
+    const priority = document.getElementById('assignPriority').value;
+
+    try {
+      const res = await fetch('/api/v1/training/assignments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-worker-id': 'SUP-JH-DGMS-0001'
+        },
+        body: JSON.stringify({ workerId, moduleId, priority })
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert('Training module successfully assigned!');
+        closeModal('assignModal');
+        loadAllData();
+      } else {
+        alert('Error: ' + data.message);
+      }
+    } catch (e) {
+      alert('Error creating assignment: ' + e.message);
+    }
+  }
+
+  function saveWorker() {
+    const id = document.getElementById('newWorkerId').value.trim();
+    const name = document.getElementById('newWorkerName').value.trim();
+    const sector = document.getElementById('newWorkerSector').value;
+    const trade = document.getElementById('newWorkerTrade').value.trim();
+
+    if (!id || !name) {
+      alert('Please fill in Worker ID and Name.');
+      return;
+    }
+
+    const newWorker = {
+      workerId: id,
+      orgId: sector === 'COAL_MINING' ? 'ORG-BCCL' : sector === 'STEEL_MANUFACTURING' ? 'ORG-TATA' : 'ORG-JSMDC',
+      fullName: name,
+      designation: trade,
+      sector: sector,
+      enterprise: sector === 'COAL_MINING' ? 'Bharat Coking Coal Limited (BCCL)' : sector === 'STEEL_MANUFACTURING' ? 'Tata Steel Limited' : 'JSMDC',
+      orientationDay: 1,
+      complianceStatus: 'NEEDS_REFRESHER'
+    };
+
+    cachedWorkers.push(newWorker);
+    renderWorkersTable(cachedWorkers);
+    closeModal('workerModal');
+    alert(`Worker ${name} successfully registered in local registry.`);
+  }
+
+  async function resetDatabase() {
+    if (!confirm('Reset local demonstration database to default SIH seed?')) return;
+    try {
+      const res = await fetch('/api/v1/admin/reset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-worker-id': 'SUP-JH-DGMS-0001' }
+      });
+      const data = await res.json();
+      alert('Database successfully reset.');
+      loadAllData();
+    } catch (e) {
+      alert('Reset error: ' + e.message);
+    }
+  }
+
+  function exportCSV() {
+    let csv = 'WorkerId,FullName,Enterprise,Sector,OrientationDay,Status\n';
+    cachedWorkers.forEach(w => {
+      csv += `"${w.workerId}","${w.fullName}","${w.enterprise}","${w.sector}","${w.orientationDay}","${w.complianceStatus}"\n`;
+    });
+    downloadFile(csv, 'SafetyAR_Workforce_Compliance_Dossier.csv', 'text/csv');
+  }
+
+  function exportJSON() {
+    const data = {
+      exportTimestamp: new Date().toISOString(),
+      jurisdiction: 'Jharkhand State Industrial Safety Council',
+      workers: cachedWorkers,
+      certificates: cachedCertificates,
+      assessments: cachedAssessments
+    };
+    downloadFile(JSON.stringify(data, null, 2), 'SafetyAR_Full_Audit_Ledger.json', 'application/json');
+  }
+
+  function downloadFile(content, fileName, mimeType) {
+    const a = document.createElement('a');
+    const blob = new Blob([content], { type: mimeType });
+    a.href = URL.createObjectURL(blob);
+    a.download = fileName;
+    a.click();
+  }
+
+  window.onload = loadAllData;
+</script>
+
+</body>
+</html>

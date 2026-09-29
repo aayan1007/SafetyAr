@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SafetyAR</string>
+    <string name="app_tagline">ᱤᱱᱰᱟᱥᱴᱨᱤᱭᱟᱞ ᱮ.ᱟᱨ. ᱨᱩᱠᱷᱤᱭᱟᱹ ᱥᱮᱪᱮᱫ ᱢᱟᱸᱪ</string>
+    <string name="region_tag">ᱡᱷᱟᱨᱠᱷᱚᱸᱰ ᱤᱱᱰᱟᱥᱴᱨᱤᱭᱟᱞ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱵᱟᱹᱭᱥᱤ (SIH 2026)</string>
+
+    <!-- Language Selection -->
+    <string name="select_language_title">ᱟᱢᱟᱜ ᱯᱟᱹᱨᱥᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ</string>
+    <string name="select_language_sub">ᱥᱮᱪᱮᱫ ᱞᱟᱹᱜᱤᱫ ᱠᱩᱥᱤᱭᱟᱱ ᱯᱟᱹᱨᱥᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ</string>
+    <string name="lang_en">English</string>
+    <string name="lang_hi">हिन्दी (Hindi)</string>
+    <string name="lang_sat">ᱥᱟᱱᱛᱟᱲᱤ (Santali)</string>
+    <string name="btn_continue">ᱞᱟᱦᱟᱜ ᱢᱮ</string>
+
+    <!-- Worker Authentication & Demo Logins -->
+    <string name="login_title">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱯᱚᱨᱴᱟᱞ</string>
+    <string name="login_subtitle">ᱩᱯᱨᱩᱢ ᱟᱨ ᱵᱟᱭᱳᱢᱮᱴᱨᱤᱠ ᱯᱩᱥᱴᱟᱹᱣ</string>
+    <string name="login_worker_id_hint">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱟᱭ.ᱰᱤ. ᱮᱢ ᱢᱮ</string>
+    <string name="btn_login">ᱵᱚᱞᱚᱱ ᱢᱮ</string>
+    <string name="demo_login_header">SIH ᱡᱩᱨᱤ ᱰᱮᱢᱳ: ᱑-ᱴᱮᱯ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱵᱟᱪᱷᱟᱣ</string>
+    <string name="demo_worker_coal">ᱠᱩᱭᱞᱟᱹ ᱠᱷᱟᱫᱟᱱ ᱠᱟᱹᱢᱤᱭᱟᱹ (ᱨᱟᱢᱮᱥ ᱥᱚᱨᱮᱱ - ᱫᱷᱟᱱᱵᱟᱫᱽ)</string>
+    <string name="demo_worker_steel">ᱤᱥᱯᱟᱛ ᱠᱟᱹᱢᱤᱭᱟᱹ (ᱚᱨᱡᱩᱱ ᱢᱟᱦᱛᱳ - ᱡᱟᱢᱥᱮᱫᱽᱯᱩᱨ)</string>
+    <string name="demo_worker_mica">ᱟᱵᱽᱨᱟᱠ ᱠᱟᱹᱢᱤᱭᱟᱹ (ᱥᱩᱱᱤᱛᱟ ᱢᱩᱨᱢᱩ - ᱠᱳᱰᱟᱨᱢᱟ)</string>
+
+    <!-- Worker Profile -->
+    <string name="profile_title">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱯᱨᱳᱯᱷᱟᱭᱤᱞ</string>
+    <string name="worker_name_label">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ:</string>
+    <string name="worker_id_label">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱟᱭ.ᱰᱤ:</string>
+    <string name="worker_org_label">ᱠᱷᱟᱫᱟᱱ / ᱠᱟᱹᱨᱜᱟᱲ:</string>
+    <string name="worker_dept_label">ᱪᱟᱸᱜᱟ / ᱵᱤᱵᱷᱟᱜᱽ:</string>
+    <string name="worker_trade_label">ᱠᱟᱹᱢᱤ ᱦᱩᱫᱟᱹ:</string>
+    <string name="worker_joining_label">ᱥᱮᱞᱮᱫ ᱢᱟᱹᱦᱤᱛ:</string>
+    <string name="worker_status_certified">ᱯᱟᱥ ᱟᱠᱟᱱᱟ (ᱨᱩᱠᱷᱤᱭᱟᱹ ᱢᱟᱱᱟᱣ)</string>
+    <string name="worker_status_pending">ᱥᱮᱪᱮᱫ ᱞᱟᱹᱠᱛᱤ</string>
+    <string name="btn_change_language">ᱯᱟᱹᱨᱥᱤ ᱵᱚᱫᱚᱞ ᱢᱮ</string>
+    <string name="btn_logout">ᱵᱮᱜᱟᱨ ᱠᱟᱹᱢᱤᱭᱟᱹ / ᱚᱰᱚᱠᱚᱜ ᱢᱮ</string>
+
+    <!-- Dashboard & Orientation -->
+    <string name="nav_dashboard">ᱰᱮᱥᱵᱳᱨᱰ</string>
+    <string name="orientation_header">᱓᱐-ᱢᱟᱦᱟᱸ ᱱᱟᱣᱟ ᱠᱟᱹᱢᱤᱭᱟᱹ ᱥᱮᱪᱮᱫ</string>
+    <string name="orientation_day_format">ᱢᱟᱦᱟᱸ %1$d / ᱓᱐ ᱥᱮᱪᱮᱫ</string>
+    <string name="orientation_percent_format">%1$d%% ᱯᱩᱨᱟᱹᱣ</string>
+    <string name="orientation_days_left">ᱠᱟᱹᱢᱤ ᱮᱦᱚᱵ ᱞᱟᱦᱟ %1$d ᱢᱟᱦᱟᱸ ᱥᱟᱨᱮᱡ</string>
+
+    <!-- Current Assigned Training -->
+    <string name="assigned_training_header">ᱱᱤᱛᱚᱜᱟᱜ ᱥᱮᱪᱮᱫ ᱠᱟᱹᱢᱤ</string>
+    <string name="btn_continue_training">ᱥᱮᱪᱮᱫ ᱪᱟᱞᱟᱣ ᱢᱮ</string>
+
+    <!-- Main Navigation Action Buttons -->
+    <string name="action_continue_training">ᱥᱮᱪᱮᱫ ᱪᱟᱞᱟᱣ ᱢᱮ</string>
+    <string name="action_ar_training">AR ᱨᱩᱠᱷᱤᱭᱟᱹ ᱚᱵᱷᱟᱥ</string>
+    <string name="action_assessments">AR ᱵᱤᱰᱟᱹᱣ ᱵᱤᱱᱤᱰ</string>
+    <string name="action_certificates">ᱤᱧᱟᱜ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱯᱟᱥ</string>
+    <string name="action_history">ᱥᱮᱪᱮᱫ ᱱᱟᱜᱟᱢ</string>
+    <string name="action_supervisor_scan">QR ᱯᱩᱥᱴᱟᱹᱣ ᱢᱮ</string>
+    <string name="action_profile">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱩᱯᱨᱩᱢ</string>
+    <string name="action_help">ᱜᱚᱲᱚ ᱟᱨ ᱟᱯᱚᱛᱠᱟᱞᱤᱱ</string>
+
+    <!-- Sectors -->
+    <string name="sector_coal_mining">ᱠᱩᱭᱞᱟᱹ ᱠᱷᱟᱫᱟᱱ ᱨᱩᱠᱷᱤᱭᱟᱹ (DGMS)</string>
+    <string name="sector_coal_desc">ᱫᱷᱟᱱᱵᱟᱫᱽ-ᱡᱷᱟᱨᱤᱭᱟ ᱞᱟᱹᱜᱤᱫ ᱚᱛ ᱞᱟᱛᱟᱨ ᱪᱷᱟᱛ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱟᱨ ᱜᱮᱥ ᱯᱟᱱᱛᱷᱟ᱾</string>
+    <string name="sector_steel_mfg">ᱤᱥᱯᱟᱛ ᱟᱨ ᱢᱮᱴᱟᱞᱚᱨᱡᱤ</string>
+    <string name="sector_steel_desc">ᱡᱟᱢᱥᱮᱫᱽᱯᱩᱨ-ᱵᱳᱠᱟᱨᱳ ᱞᱟᱹᱜᱤᱫ ᱵᱞᱟᱥᱴ ᱯᱷᱚᱨᱱᱮᱥ ᱟᱨ ᱠᱨᱮᱱ ᱨᱩᱠᱷᱤᱭᱟᱹ᱾</string>
+    <string name="sector_mica_proc">ᱟᱵᱽᱨᱟᱠ (Mica) ᱠᱷᱟᱫᱟᱱ ᱠᱟᱹᱢᱤ</string>
+    <string name="sector_mica_desc">ᱠᱳᱰᱟᱨᱢᱟ-ᱜᱤᱨᱤᱰᱤᱦ ᱞᱟᱹᱜᱤᱫ ᱫᱷᱩᱲᱤ ᱟᱨ ᱥᱤᱞᱤᱠᱳᱥᱤᱥ ᱨᱩᱠᱷᱤᱭᱟᱹ᱾</string>
+
+    <!-- AR Training & Simulation -->
+    <string name="ar_loading">AR ᱮᱛᱚᱦᱚᱵᱚᱜ ᱠᱟᱱᱟ…</string>
+    <string name="ar_plane_search">ᱠᱮᱢᱮᱨᱟ ᱛᱮ ᱚᱛ ᱮᱞᱟᱠᱟ ᱥᱠᱮᱱ ᱢᱮ…</string>
+    <string name="ar_tap_to_place">ᱵᱚᱛᱚᱨ ᱴᱷᱟᱶ ᱵᱮᱱᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱴᱮᱯ ᱢᱮ</string>
+    <string name="ar_hazard_detected">ᱵᱚᱛᱚᱨ ᱧᱟᱢ ᱮᱱᱟ!</string>
+    <string name="ar_sop_action">ᱞᱟᱹᱠᱛᱤᱭᱟᱱ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱠᱟᱹᱢᱤ</string>
+    <string name="ar_inspect_hazard">ᱵᱚᱛᱚᱨ ᱧᱮᱞ ᱯᱩᱥᱴᱟᱹᱣ ᱢᱮ</string>
+    <string name="ar_neutralize_hazard">ᱨᱩᱠᱷᱤᱭᱟᱹ ᱠᱟᱹᱢᱤ ᱯᱩᱨᱟᱹᱣ ᱢᱮ</string>
+
+    <!-- Assessment -->
+    <string name="assessment_title">AR ᱵᱮᱵᱷᱟᱨᱤᱭᱟᱹ ᱵᱤᱰᱟᱹᱣ</string>
+    <string name="assessment_timer">ᱥᱟᱨᱮᱡ ᱚᱠᱛᱚ:</string>
+    <string name="assessment_score">ᱱᱚᱢᱵᱚᱨ:</string>
+    <string name="assessment_submit">ᱵᱤᱰᱟᱹᱣ ᱮᱢ ᱢᱮ</string>
+    <string name="assessment_pass">ᱵᱤᱰᱟᱹᱣ ᱯᱟᱥ ᱮᱱᱟ (ᱠᱟᱹᱢᱤ ᱞᱟᱹᱜᱤᱫ ᱴᱷᱤᱠ)</string>
+    <string name="assessment_fail">ᱵᱤᱰᱟᱹᱣ ᱵᱟᱝ ᱯᱟᱥ ᱮᱱᱟ (ᱟᱨᱦᱚᱸ ᱥᱮᱪᱮᱫ ᱢᱮ)</string>
+
+    <!-- QR & Certification -->
+    <string name="cert_title">ᱰᱤᱡᱤᱴᱟᱞ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱯᱟᱥ</string>
+    <string name="cert_qr_label">QR ᱥᱠᱮᱱᱟᱨ ᱛᱮ ᱧᱮᱞ ᱢᱮ</string>
+    <string name="cert_validity">᱓᱖᱕ ᱢᱟᱦᱟᱸ ᱞᱟᱹᱜᱤᱫ ᱴᱷᱤᱠ</string>
+    <string name="scan_qr_title">ᱥᱩᱯᱟᱨᱵᱷᱟᱭᱡᱟᱨ QR ᱯᱩᱥᱴᱟᱹᱣ</string>
+    <string name="scan_qr_instruction">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱨᱩᱠᱷᱤᱭᱟᱹ QR ᱠᱳᱰ ᱯᱷᱨᱮᱢ ᱨᱮ ᱫᱚᱦᱚᱭ ᱢᱮ</string>
+    <string name="cert_verified">ᱯᱟᱥ ᱴᱷᱤᱠ ᱜᱮᱭᱟ - ᱠᱟᱹᱢᱤᱭᱟᱹ ᱪᱷᱟᱹᱲ ᱮᱱᱟ</string>
+    <string name="cert_invalid">ᱵᱟᱝ ᱴᱷᱤᱠ ᱥᱮ ᱢᱩᱪᱟᱹᱫ ᱟᱠᱟᱱ ᱯᱟᱥ</string>
+
+    <!-- 4 Required Verification States -->
+    <string name="status_valid">ᱴᱷᱤᱠ ᱜᱮᱭᱟ (VALID)</string>
+    <string name="status_expired">ᱢᱩᱪᱟᱹᱫ ᱮᱱᱟ (EXPIRED)</string>
+    <string name="status_revoked">ᱨᱟᱹᱯᱩᱫ ᱮᱱᱟ (REVOKED)</string>
+    <string name="status_not_found">ᱵᱟᱝ ᱧᱟᱢᱚᱜ ᱠᱟᱱᱟ (NOT FOUND)</string>
+    <string name="status_valid_msg">ᱯᱟᱥ ᱴᱷᱤᱠ ᱜᱮᱭᱟ - ᱠᱟᱹᱢᱤᱭᱟᱹ ᱪᱷᱟᱹᱲ ᱮᱱᱟ</string>
+    <string name="status_expired_msg">ᱯᱟᱥ ᱢᱩᱪᱟᱹᱫ ᱮᱱᱟ - ᱟᱨᱦᱚᱸ ᱵᱤᱰᱟᱹᱣ ᱮᱢ ᱢᱮ</string>
+    <string name="status_revoked_msg">ᱵᱚᱞᱚᱱ ᱢᱟᱱᱟ ᱜᱮᱭᱟ - ᱨᱩᱠᱷᱤᱭᱟᱹ ᱵᱟᱹᱲᱤᱡ ᱠᱷᱟᱹᱛᱤᱨ ᱯᱟᱥ ᱨᱟᱹᱯᱩᱫ</string>
+    <string name="status_not_found_msg">ᱵᱟᱝ ᱧᱟᱢ ᱞᱮᱱᱟ - ᱵᱟᱝ ᱴᱷᱤᱠ ᱥᱮ ᱮᱲᱮ ᱯᱟᱥ</string>
+
+    <!-- Certificate Labels -->
+    <string name="cert_worker_name">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱧᱩᱛᱩᱢ</string>
+    <string name="cert_worker_id">ᱠᱟᱹᱢᱤᱭᱟᱹ ᱟᱭᱰᱤ</string>
+    <string name="cert_organization">ᱠᱚᱢᱯᱟᱱᱤ / ᱜᱟᱶᱛᱟ</string>
+    <string name="cert_training_module">ᱥᱮᱪᱮᱫ ᱦᱟᱹᱴᱤᱧ</string>
+    <string name="cert_score">ᱱᱚᱢᱵᱚᱨ</string>
+    <string name="cert_issue_date">ᱮᱢ ᱢᱟᱦᱟᱸ</string>
+    <string name="cert_validity_date">ᱢᱩᱪᱟᱹᱫ ᱢᱟᱦᱟᱸ</string>
+    <string name="cert_id_label">ᱥᱟᱨᱴᱤᱯᱷᱤᱠᱮᱴ ᱟᱭᱰᱤ</string>
+    <string name="cert_export_image">ᱥᱟᱨᱴᱤᱯᱷᱤᱠᱮᱴ ᱪᱤᱛᱟᱹᱨ ᱥᱟᱧᱪᱟᱣ (PNG)</string>
+    <string name="cert_share_text">ᱯᱟᱥ ᱵᱤᱵᱚᱨᱚᱱ ᱵᱷᱮᱡᱟᱭ ᱢᱮ (Text)</string>
+
+    <!-- Training History -->
+    <string name="history_title">ᱥᱮᱪᱮᱫ ᱱᱟᱜᱟᱢ ᱨᱮᱠᱳᱨᱰ</string>
+    <string name="history_subtitle">DGMS ᱯᱳᱨᱴᱟᱞ ᱥᱟᱶ ᱡᱚᱲᱟᱣ ᱟᱠᱟᱱ ᱨᱮᱠᱳᱨᱰ</string>
+    <string name="history_empty">ᱡᱟᱦᱟᱸᱱ ᱨᱮᱠᱳᱨᱰ ᱵᱟᱹᱱᱩᱜᱼᱟ᱾ ᱨᱮᱠᱳᱨᱰ ᱵᱮᱱᱟᱣ ᱞᱟᱹᱜᱤᱫ AR ᱵᱤᱰᱟᱹᱣ ᱮᱢ ᱢᱮ᱾</string>
+
+    <!-- Help & Emergency SOS -->
+    <string name="help_title">ᱟᱯᱚᱛᱠᱟᱞᱤᱱ ᱜᱚᱲᱚ ᱟᱨ ᱱᱤᱭᱚᱢ</string>
+    <string name="help_subtitle">ᱞᱚᱜᱚᱱ ᱠᱷᱟᱫᱟᱱ ᱜᱚᱲᱚ ᱱᱚᱢᱵᱚᱨ ᱟᱨ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱠᱟᱛᱷᱟ</string>
+    <string name="sos_emergency_banner">ᱠᱷᱟᱫᱟᱱ ᱨᱮ ᱟᱯᱚᱛ ᱦᱩᱭ ᱞᱮᱱᱠᱷᱟᱱ: ᱞᱚᱜᱚᱱ ᱚᱰᱚᱠᱚᱜ ᱢᱮ</string>
+    <string name="sos_dgms_hotline">DGMS ᱟᱯᱚᱛ ᱱᱚᱢᱵᱚᱨ: 1800-345-6677</string>
+    <string name="sos_dhanbad_rescue">ᱫᱷᱟᱱᱵᱟᱫᱽ ᱠᱷᱟᱫᱟᱱ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱴᱷᱟᱶ: 0326-2202020</string>
+    <string name="sos_jamshedpur_safety">ᱡᱟᱢᱥᱮᱫᱽᱯᱩᱨ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱦᱮᱰᱠᱩᱣᱟᱴᱚᱨ: 0657-2431234</string>
+    <string name="sos_koderma_health">ᱠᱳᱰᱟᱨᱢᱟ ᱦᱚᱲᱢᱚ ᱥᱟᱶᱟᱨ ᱴᱷᱟᱶ: 06534-222100</string>
+
+    <!-- Offline Sync -->
+    <string name="sync_status_synced">ᱰᱮᱴᱟᱵᱮᱥ DGMS ᱯᱳᱨᱴᱟᱞ ᱥᱟᱶ ᱢᱤᱞᱟᱹᱣ ᱮᱱᱟ</string>
+    <string name="sync_status_pending">ᱞᱳᱠᱟᱞ ᱨᱮᱠᱳᱨᱰ ᱵᱟᱝ ᱢᱤᱞᱟᱹᱣ ᱟᱠᱟᱱᱟ</string>
+    <string name="sync_button">ᱱᱤᱛ ᱜᱮ ᱢᱤᱞᱟᱹᱣ ᱢᱮ</string>
+
+    <!-- SIH 2026 Primary Demo: Fire & Explosion Module -->
+    <string name="sih_demo_badge">SIH ᱒᱐᱒᱖ ᱢᱩᱬᱩᱛ ᱰᱮᱢᱳ</string>
+    <string name="sih_demo_title">AR ᱢᱚᱰᱩᱞ ᱑: ᱥᱮᱸᱜᱮᱞ ᱟᱨ ᱵᱚᱢᱵᱷ ᱨᱩᱠᱷᱤᱭᱟᱹ</string>
+    <string name="sih_demo_desc">᱑᱐-ᱛᱷᱟᱠ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱥᱤᱢᱩᱞᱮᱥᱚᱱ: ᱥᱮᱸᱜᱮᱞ ᱪᱤᱱᱦᱟᱹᱣ, ᱟᱞᱟᱨᱢ, PASS ᱵᱮᱵᱷᱟᱨ ᱟᱨ ᱥᱩᱞᱩᱠ ᱴᱷᱟᱶ ᱫᱟᱹᱲ᱾</string>
+    <string name="btn_sih_learning">᱑᱑-ᱛᱷᱟᱠ ᱥᱮᱪᱮᱫ ᱯᱟᱱᱛᱷᱟ \u2192</string>
+    <string name="btn_sih_direct_ar">\u26a1 AR ᱥᱤᱢᱩᱞᱮᱥᱚᱱ</string>
+
+    <!-- Reusable Assessment Engine (Section 11) -->
+    <string name="engine_exam_title">ᱤᱱᱰᱟᱥᱴᱨᱤᱭᱟᱞ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱵᱤᱰᱟᱹᱣ ᱵᱤᱱᱤᱰ</string>
+    <string name="engine_exam_passed">ᱵᱤᱰᱟᱹᱣ ᱯᱟᱥ ᱮᱱᱟ</string>
+    <string name="engine_exam_failed">ᱵᱤᱰᱟᱹᱣ ᱵᱟᱝ ᱯᱟᱥ ᱮᱱᱟ</string>
+    <string name="engine_critical_violation_title">ᱢᱩᱬᱩᱛ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱱᱤᱭᱚᱢ ᱵᱟᱹᱲᱤᱡ</string>
+    <string name="engine_review_training">ᱥᱮᱪᱮᱫ ᱱᱟᱣᱟ ᱛᱮ ᱧᱮᱞ ᱢᱮ</string>
+    <string name="engine_retry_assessment">ᱟᱨᱦᱚᱸ ᱵᱤᱰᱟᱹᱣ ᱮᱢ ᱢᱮ</string>
+    <string name="engine_weak_areas_title">ᱠᱚᱢᱡᱳᱨ ᱴᱷᱟᱶ ᱟᱨ ᱥᱩᱫᱷᱟᱹᱨ</string>
+
+    <!-- SIH 2026 Primary Demo: AR Module 2 Gas Leak & Confined Space -->
+    <string name="sih_demo2_badge">SIH ᱒᱐᱒᱖ ᱢᱩᱬᱩᱛ ᱰᱮᱢᱳ ᱒</string>
+    <string name="sih_demo2_title">AR ᱢᱚᱰᱩᱞ ᱒: ᱜᱮᱥ ᱞᱤᱠ ᱟᱨ ᱥᱟᱸᱜᱤᱧ ᱴᱷᱟᱶ (Confined Space)</string>
+    <string name="sih_demo2_desc">᱑᱐-ᱛᱷᱟᱠ ᱨᱩᱠᱷᱤᱭᱟᱹ ᱥᱤᱢᱩᱞᱮᱥᱚᱱ: ᱜᱮᱥ ᱵᱤᱰᱟᱹᱣ, SCBA ᱥᱟᱡᱽ, ᱜᱟᱛᱮ ᱵᱟᱹᱭᱥᱤ, ᱪᱷᱟᱹᱲ ᱯᱟᱨᱢᱤᱴ ᱟᱨ ᱫᱟᱹᱲ᱾</string>
+    <string name="btn_sih_demo2_launch">\u26a1 AR ᱜᱮᱥ ᱟᱨ ᱴᱷᱟᱶ ᱮᱦᱚᱵ \u2192</string>
+</resources>

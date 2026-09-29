@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
+
+            <!-- Top Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <ImageButton
+                    android:id="@+id/btnBackFromCert"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_check_circle"
+                    app:tint="@color/text_on_dark"
+                    android:contentDescription="@string/btn_back" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cert_title"
+                        android:textColor="@color/text_on_dark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DGMS Approved Industrial Safety Registry"
+                        android:textColor="@color/text_on_dark_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvCertStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/badge_certified"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="VALID"
+                    android:textColor="@color/hazard_green"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Official Industrial Safety Certificate Card (Capturable for PNG Export) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCertificate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface_card"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:strokeColor="@color/safety_primary"
+                app:strokeWidth="1.5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:gravity="center_horizontal">
+
+                    <!-- Government / Council Header Banner -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GOVERNMENT OF JHARKHAND"
+                        android:textColor="@color/text_on_dark_muted"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="STATE INDUSTRIAL SAFETY COUNCIL"
+                        android:textColor="@color/safety_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.05" />
+
+                    <TextView
+                        android:id="@+id/tvCertSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AR Vocational Competency &amp; Life-Safety Pass"
+                        android:textColor="@color/text_on_dark"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="14dp" />
+
+                    <!-- QR Code Pass Box -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="3dp"
+                        app:strokeColor="@color/border_light"
+                        app:strokeWidth="1dp">
+
+                        <ImageView
+                            android:id="@+id/ivQrCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="12dp"
+                            android:contentDescription="@string/cert_qr_label" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Certificate ID Tag -->
+                    <TextView
+                        android:id="@+id/tvCertId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/badge_certified"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:text="SAFETYAR-JH-2026-000001"
+                        android:textColor="@color/safety_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Offline-Verifiable Cryptographic Pass"
+                        android:textColor="@color/text_on_dark_muted"
+                        android:textSize="11sp" />
+
+                    <!-- Worker & Training Details Grid -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/card_gradient_dark"
+                        android:padding="14dp">
+
+                        <!-- 1. Worker Name -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Worker Name:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertWorkerName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ramesh Soren"
+                                android:textColor="@color/text_on_dark"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- 2. Worker ID -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Worker ID:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertWorkerId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="WRK-JH-COAL-0891"
+                                android:textColor="@color/text_on_dark"
+                                android:textSize="12sp"
+                                android:fontFamily="monospace" />
+                        </LinearLayout>
+
+                        <!-- 3. Organization -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Organization:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertOrganization"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bharat Coking Coal Limited (BCCL)"
+                                android:textColor="@color/text_on_dark"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- 4. Training Module -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Training Module:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertTrainingModule"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fire &amp; Explosion Emergency Response"
+                                android:textColor="@color/safety_primary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- 5. Score -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Evaluation Score:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertScore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="94% (Grade A - Exemplary)"
+                                android:textColor="@color/hazard_green"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- 6. Issue Date -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Issue Date:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertIssueDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="13 Sep 2026"
+                                android:textColor="@color/text_on_dark"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- 7. Validity Date -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Valid Until:"
+                                android:textColor="@color/text_on_dark_muted"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tvCertValidityDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="13 Sep 2027 (365 Days)"
+                                android:textColor="@color/hazard_green"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Cryptographic Hash Verification String -->
+                    <TextView
+                        android:id="@+id/tvCertHash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:text="SHA256 Token: 8a4b3c9f21d...7e81"
+                        android:textColor="@color/text_on_dark_muted"
+                        android:textSize="10sp"
+                        android:fontFamily="monospace" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action Buttons Grid -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <!-- 1. Save / Export Certificate Image (PNG) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExportCertImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Export Certificate Image (PNG)"
+                    android:textColor="@color/safety_on_primary"
+                    app:icon="@drawable/ic_check_circle"
+                    app:iconTint="@color/safety_on_primary"
+                    app:backgroundTint="@color/safety_primary"
+                    app:cornerRadius="12dp" />
+
+                <!-- 2. Share Credential Summary (Text) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnShareCertificate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:text="Share Credential Details (Text)"
+                    android:textColor="@color/safety_primary"
+                    app:strokeColor="@color/safety_primary"
+                    app:strokeWidth="1.5dp"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

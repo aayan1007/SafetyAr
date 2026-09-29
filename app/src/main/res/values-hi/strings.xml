@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SafetyAR</string>
+    <string name="app_tagline">स्मार्ट औद्योगिक एआर व्यावसायिक सुरक्षा मंच</string>
+    <string name="region_tag">झारखंड औद्योगिक सुरक्षा परिषद (SIH 2026)</string>
+
+    <!-- Language Selection -->
+    <string name="select_language_title">अपनी भाषा चुनें</string>
+    <string name="select_language_sub">प्रशिक्षण के लिए अपनी पसंदीदा भाषा का चयन करें</string>
+    <string name="lang_en">English</string>
+    <string name="lang_hi">हिन्दी (Hindi)</string>
+    <string name="lang_sat">ᱥᱟᱱᱛᱟᱲᱤ (Santali)</string>
+    <string name="btn_continue">आगे बढ़ें</string>
+
+    <!-- Worker Authentication & Demo Logins -->
+    <string name="login_title">श्रमिक सुरक्षा पोर्टल</string>
+    <string name="login_subtitle">पहचान व बायोमेट्रिक आधारित सुरक्षा प्रमाणीकरण</string>
+    <string name="login_worker_id_hint">श्रमिक / खनिक पहचान संख्या दर्ज करें</string>
+    <string name="btn_login">सुरक्षा पोर्टल में प्रवेश करें</string>
+    <string name="demo_login_header">SIH जूरी डेमो: 1-टैप श्रमिक चयन</string>
+    <string name="demo_worker_coal">कोयला खनिक (रमेश सोरेन - धनबाद)</string>
+    <string name="demo_worker_steel">स्टील कामगार (अर्जुन महतो - जमशेदपुर)</string>
+    <string name="demo_worker_mica">अभ्रक कामगार (सुनीता मुर्मू - कोडरमा)</string>
+
+    <!-- Worker Profile -->
+    <string name="profile_title">श्रमिक सुरक्षा प्रोफ़ाइल</string>
+    <string name="worker_name_label">श्रमिक का नाम:</string>
+    <string name="worker_id_label">श्रमिक आईडी:</string>
+    <string name="worker_org_label">संस्थान / खदान:</string>
+    <string name="worker_dept_label">विभाग / यूनिट:</string>
+    <string name="worker_trade_label">व्यवसाय / पद:</string>
+    <string name="worker_joining_label">शामिल होने की तिथि:</string>
+    <string name="worker_status_certified">प्रमाणित (सुरक्षा मानकों के अनुरूप)</string>
+    <string name="worker_status_pending">प्रशिक्षण आवश्यक</string>
+    <string name="btn_change_language">भाषा बदलें</string>
+    <string name="btn_logout">श्रमिक बदलें / लॉग आउट</string>
+
+    <!-- Dashboard & Orientation -->
+    <string name="nav_dashboard">डैशबोर्ड</string>
+    <string name="orientation_header">30-दिवसीय नव-श्रमिक अभिविन्यास</string>
+    <string name="orientation_day_format">दिवस %1$d / 30 अभिविन्यास</string>
+    <string name="orientation_percent_format">%1$d%% पूर्ण</string>
+    <string name="orientation_days_left">कार्यक्षेत्र तैनाती से पहले %1$d दिन शेष</string>
+
+    <!-- Current Assigned Training -->
+    <string name="assigned_training_header">वर्तमान आवंटित प्रशिक्षण</string>
+    <string name="btn_continue_training">प्रशिक्षण जारी रखें</string>
+
+    <!-- Main Navigation Action Buttons -->
+    <string name="action_continue_training">प्रशिक्षण जारी रखें</string>
+    <string name="action_ar_training">एआर सुरक्षा अभ्यास</string>
+    <string name="action_assessments">एआर योग्यता परीक्षा</string>
+    <string name="action_certificates">मेरा सुरक्षा पास</string>
+    <string name="action_history">प्रशिक्षण इतिहास</string>
+    <string name="action_supervisor_scan">क्यूआर सत्यापन</string>
+    <string name="action_profile">श्रमिक प्रोफ़ाइल</string>
+    <string name="action_help">आपातकाल व सहायता</string>
+
+    <!-- Sectors -->
+    <string name="sector_coal_mining">कोयला खनन सुरक्षा (DGMS)</string>
+    <string name="sector_coal_desc">धनबाद-झरिया क्षेत्र हेतु भूमिगत छत सुरक्षा, मीथेन गैस जांच और कन्वेयर सावधानियां।</string>
+    <string name="sector_steel_mfg">स्टील व धातु उद्योग</string>
+    <string name="sector_steel_desc">जमशेदपुर-बोकारो हेतु ब्लास्ट फर्नेस सुरक्षा, पिघली धातु से बचाव और ओवरहेड क्रेन नियम।</string>
+    <string name="sector_mica_proc">अभ्रक (माइका) प्रसंस्करण व खदान</string>
+    <string name="sector_mica_desc">कोडरमा-गिरिडीह हेतु सिलिकोसिस रोकथाम, धूल नियंत्रण और खदान ढलान सुरक्षा।</string>
+
+    <!-- AR Training & Simulation -->
+    <string name="ar_loading">एआर सत्र शुरू हो रहा है…</string>
+    <string name="ar_plane_search">सिमुलेशन शुरू करने हेतु जमीन अथवा कार्यक्षेत्र को स्कैन करें…</string>
+    <string name="ar_tap_to_place">खतरे के परिदृश्य को स्थापित करने हेतु ग्रिड पर टैप करें</string>
+    <string name="ar_hazard_detected">खतरे की पहचान हुई!</string>
+    <string name="ar_sop_action">अनिवार्य सुरक्षा कार्यवाही</string>
+    <string name="ar_inspect_hazard">खतरे की जांच करें</string>
+    <string name="ar_neutralize_hazard">सुरक्षा नियम लागू करें / खतरा दूर करें</string>
+
+    <!-- Assessment -->
+    <string name="assessment_title">एआर व्यावहारिक योग्यता परीक्षा</string>
+    <string name="assessment_timer">शेष समय:</string>
+    <string name="assessment_score">अंक:</string>
+    <string name="assessment_submit">मूल्यांकन जमा करें</string>
+    <string name="assessment_pass">परीक्षा उत्तीर्ण (कार्य हेतु योग्य)</string>
+    <string name="assessment_fail">अनुत्तीर्ण (पुनः प्रशिक्षण आवश्यक)</string>
+
+    <!-- QR & Certification -->
+    <string name="cert_title">डिजिटल औद्योगिक सुरक्षा पास</string>
+    <string name="cert_qr_label">पर्यवेक्षक स्कैनर द्वारा स्कैन करें</string>
+    <string name="cert_validity">365 दिनों हेतु वैध</string>
+    <string name="scan_qr_title">पर्यवेक्षक क्यूआर सत्यापन</string>
+    <string name="scan_qr_instruction">श्रमिक सुरक्षा क्यूआर कोड को फ्रेम में रखें</string>
+    <string name="cert_verified">पास सत्यापित - श्रमिक अधिकृत है</string>
+    <string name="cert_invalid">अमान्य अथवा समय-समाप्त सुरक्षा पास</string>
+
+    <!-- 4 Required Verification States -->
+    <string name="status_valid">वैध (VALID)</string>
+    <string name="status_expired">समाप्त (EXPIRED)</string>
+    <string name="status_revoked">रद्द (REVOKED)</string>
+    <string name="status_not_found">अज्ञात (NOT FOUND)</string>
+    <string name="status_valid_msg">पास सत्यापित - श्रमिक अधिकृत है</string>
+    <string name="status_expired_msg">समाप्त पास - पुनः प्रमाणन आवश्यक है</string>
+    <string name="status_revoked_msg">प्रवेश निषेध - सुरक्षा उल्लंघन पर प्रमाण पत्र रद्द</string>
+    <string name="status_not_found_msg">अज्ञात - अप्रमाणित अथवा जाली पास</string>
+
+    <!-- Certificate Labels -->
+    <string name="cert_worker_name">श्रमिक का नाम</string>
+    <string name="cert_worker_id">श्रमिक आईडी</string>
+    <string name="cert_organization">संस्थान / कंपनी</string>
+    <string name="cert_training_module">प्रशिक्षण मॉड्यूल</string>
+    <string name="cert_score">प्राप्तांक</string>
+    <string name="cert_issue_date">जारी करने की तिथि</string>
+    <string name="cert_validity_date">वैधता तिथि</string>
+    <string name="cert_id_label">प्रमाण पत्र आईडी</string>
+    <string name="cert_export_image">प्रमाण पत्र चित्र सेव करें (PNG)</string>
+    <string name="cert_share_text">प्रमाण पत्र विवरण साझा करें (टेक्स्ट)</string>
+
+    <!-- Training History -->
+    <string name="history_title">समीक्षा व प्रशिक्षण इतिहास</string>
+    <string name="history_subtitle">केंद्रीय DGMS पोर्टल से सिंक किए गए सत्यापित रिकॉर्ड</string>
+    <string name="history_empty">कोई पूर्व मूल्यांकन दर्ज नहीं है। रिकॉर्ड बनाने हेतु एआर परीक्षा दें।</string>
+
+    <!-- Help & Emergency SOS -->
+    <string name="help_title">आपातकालीन नियम व सहायता</string>
+    <string name="help_subtitle">त्वरित औद्योगिक हेल्पलाइन व DGMS सुरक्षा निर्देश</string>
+    <string name="sos_emergency_banner">खदान/कारखाने में दुर्घटना की स्थिति में: तुरंत बाहर निकलें</string>
+    <string name="sos_dgms_hotline">DGMS आपातकालीन हेल्पलाइन: 1800-345-6677</string>
+    <string name="sos_dhanbad_rescue">धनबाद खदान बचाव केंद्र: 0326-2202020</string>
+    <string name="sos_jamshedpur_safety">जमशेदपुर औद्योगिक सुरक्षा मुख्यालय: 0657-2431234</string>
+    <string name="sos_koderma_health">कोडरमा व्यावसायिक स्वास्थ्य केंद्र: 06534-222100</string>
+
+    <!-- Offline Sync -->
+    <string name="sync_status_synced">डेटाबेस केंद्रीय DGMS पोर्टल के साथ सिंक हो गया है</string>
+    <string name="sync_status_pending">स्थानीय रिकॉर्ड सिंक होना बाकी है</string>
+    <string name="sync_button">तुरंत सिंक करें</string>
+
+    <!-- SIH 2026 Primary Demo: Fire & Explosion Module -->
+    <string name="sih_demo_badge">SIH 2026 प्रमुख डेमो</string>
+    <string name="sih_demo_title">एआर मॉड्यूल 1: आग व विस्फोट नियंत्रण</string>
+    <string name="sih_demo_desc">10-चरणीय क्रमिक सिमुलेशन: अग्नि लपटें, आपातकालीन अलार्म, PASS अग्निशामक विधि और सुरक्षित असेंबली निकासी।</string>
+    <string name="btn_sih_learning">11-चरणीय शिक्षण प्रवाह \u2192</string>
+    <string name="btn_sih_direct_ar">\u26a1 सीधा एआर सिमुलेशन</string>
+
+    <!-- Reusable Assessment Engine (Section 11) -->
+    <string name="engine_exam_title">औद्योगिक सुरक्षा योग्यता परीक्षा</string>
+    <string name="engine_exam_passed">योग्यता परीक्षा उत्तीर्ण</string>
+    <string name="engine_exam_failed">योग्यता परीक्षा अनुत्तीर्ण</string>
+    <string name="engine_critical_violation_title">महत्वपूर्ण सुरक्षा शून्य-सहनशीलता नियम</string>
+    <string name="engine_review_training">प्रशिक्षण पाठों की समीक्षा करें</string>
+    <string name="engine_retry_assessment">पुनः परीक्षा दें</string>
+    <string name="engine_weak_areas_title">पहचाने गए कमजोर क्षेत्र व सुधार निर्देश</string>
+
+    <!-- SIH 2026 Primary Demo: AR Module 2 Gas Leak & Confined Space -->
+    <string name="sih_demo2_badge">SIH 2026 प्रमुख डेमो 2</string>
+    <string name="sih_demo2_title">एआर मॉड्यूल 2: गैस रिसाव व सीमित स्थान (Confined Space)</string>
+    <string name="sih_demo2_desc">10-चरणीय क्रमिक सिमुलेशन: 4-गैस परीक्षण, SCBA पीपीई चयन, बडी-सिस्टम, प्रवेश परमिट सत्यापन और सुरक्षित निकासी।</string>
+    <string name="btn_sih_demo2_launch">\u26a1 गैस व सीमित स्थान एआर शुरू करें \u2192</string>
+</resources>

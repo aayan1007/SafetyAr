@@ -1,0 +1,33 @@
+# Android Studio
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+**/build/
+build/
+
+# Local Android SDK configuration
+local.properties
+
+# Generated files
+captures/
+.externalNativeBuild/
+.cxx/
+
+# APK / App Bundle
+*.apk
+*.aab
+
+# Signing keys
+*.jks
+*.keystore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example

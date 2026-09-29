@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- Live Camera Feed Container -->
+    <FrameLayout
+        android:id="@+id/fireCameraContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Spatial 3D AR Virtual Objects & Particle Overlay -->
+    <com.safetyar.app.ar.FireExplosionOverlayView
+        android:id="@+id/fireOverlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Sleek Top HUD: Mission Objective & Score -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="12dp"
+        android:background="#D90B0F19">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnBackFromFireAr"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_check_circle"
+                app:tint="@color/text_on_dark"
+                android:contentDescription="Exit" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FIRE &amp; EXPLOSION AR DRILL"
+                    android:textColor="@color/safety_primary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:id="@+id/tvFireCurrentStep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Step 1 of 10: Identify Fire Hazard"
+                    android:textColor="@color/text_on_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFireScoreBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_certified"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="SCORE: 100"
+                android:textColor="@color/hazard_green"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Dynamic Guidance / Real-Time Instruction Banner -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFeedbackBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/surface_card"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/safety_primary"
+            app:strokeWidth="1.5dp">
+
+            <TextView
+                android:id="@+id/tvImmediateFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp"
+                android:text="Pan camera to locate active flames. Tap fire base to verify 3m standoff."
+                android:textColor="@color/text_on_dark"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Sleek Bottom Action & P.A.S.S. Deck -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
+        android:background="#E60B0F19">
+
+        <!-- Extinguisher Selection Deck (Step 4) -->
+        <LinearLayout
+            android:id="@+id/layoutExtinguisherSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHOOSE EXTINGUISHER FOR METHANE FIRE:"
+                android:textColor="@color/safety_primary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectDcp"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Dry Powder (DCP) \u2713"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/safety_primary"
+                    android:textColor="@color/safety_on_primary"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectWater"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="Water Jet (Unsafe)"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_on_dark_muted"
+                    app:strokeColor="@color/border_subtle"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- PASS Protocol Controller (Steps 5 - 8) -->
+        <LinearLayout
+            android:id="@+id/layoutPassController"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="P.A.S.S. EXTINGUISHER DRILL:"
+                    android:textColor="@color/safety_primary"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
+
+                <TextView
+                    android:id="@+id/tvPassProgressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fire Health: 100%"
+                    android:textColor="@color/text_on_dark_muted"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <!-- 1. Pull -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPassPull"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="3dp"
+                    android:text="1. Pull Pin"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+
+                <!-- 2. Aim -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPassAim"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="3dp"
+                    android:text="2. Aim Base"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+
+                <!-- 3. Squeeze -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPassSqueeze"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="3dp"
+                    android:text="3. Squeeze"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+
+                <!-- 4. Sweep -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPassSweep"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3dp"
+                    android:text="4. Sweep"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Dynamic Contextual Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContextualAction"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:text="Recognize Fire Hazard"
+            android:textColor="@color/safety_on_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/safety_primary"
+            app:cornerRadius="14dp" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.SafetyAR" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/safety_primary</item>
+        <item name="colorOnPrimary">@color/safety_on_primary</item>
+        <item name="colorPrimaryContainer">@color/safety_primary_container</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/safety_secondary</item>
+        <item name="colorOnSecondary">@color/safety_on_secondary</item>
+
+        <!-- Status bar and navigation bar color -->
+        <item name="android:statusBarColor">@color/safety_secondary_dark</item>
+        <item name="android:navigationBarColor">@color/safety_secondary_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Fullscreen AR / Camera theme -->
+    <style name="Theme.SafetyAR.Fullscreen" parent="Theme.SafetyAR">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>

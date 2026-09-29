@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">SafetyAR</string>
+    <string name="app_tagline">Smart Industrial AR Vocational Safety Platform</string>
+    <string name="region_tag">Jharkhand Industrial Safety Council (SIH 2026)</string>
+
+    <!-- Language Selection -->
+    <string name="select_language_title">Select Your Language</string>
+    <string name="select_language_sub">Choose your preferred training dialect</string>
+    <string name="lang_en">English</string>
+    <string name="lang_hi">हिन्दी (Hindi)</string>
+    <string name="lang_sat">ᱥᱟᱱᱛᱟᱲᱤ (Santali)</string>
+    <string name="btn_continue">Continue</string>
+
+    <!-- Worker Authentication & Demo Logins -->
+    <string name="login_title">Worker Safety Portal</string>
+    <string name="login_subtitle">Biometric &amp; ID-based field authentication</string>
+    <string name="login_worker_id_hint">Enter National Worker / Miner ID</string>
+    <string name="btn_login">Sign In to Safety Portal</string>
+    <string name="demo_login_header">SIH JURY DEMO: 1-TAP WORKER SELECTION</string>
+    <string name="demo_worker_coal">Demo Coal Miner (Ramesh Soren - Dhanbad)</string>
+    <string name="demo_worker_steel">Demo Steel Worker (Arjun Mahto - Jamshedpur)</string>
+    <string name="demo_worker_mica">Demo Mica Worker (Sunita Murmu - Koderma)</string>
+
+    <!-- Worker Profile -->
+    <string name="profile_title">Worker Safety Profile</string>
+    <string name="worker_name_label">Worker Name:</string>
+    <string name="worker_id_label">Worker ID:</string>
+    <string name="worker_org_label">Enterprise / Mine:</string>
+    <string name="worker_dept_label">Department / Unit:</string>
+    <string name="worker_trade_label">Trade / Specialty:</string>
+    <string name="worker_joining_label">Joining Date:</string>
+    <string name="worker_status_certified">CERTIFIED (Compliant)</string>
+    <string name="worker_status_pending">TRAINING REQUIRED</string>
+    <string name="btn_change_language">Change Language</string>
+    <string name="btn_logout">Switch Worker / Log Out</string>
+
+    <!-- Dashboard & Orientation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="orientation_header">30-DAY NEW WORKER ORIENTATION</string>
+    <string name="orientation_day_format">Day %1$d / 30 Orientation</string>
+    <string name="orientation_percent_format">%1$d%% Complete</string>
+    <string name="orientation_days_left">%1$d days remaining until field deployment audit</string>
+
+    <!-- Current Assigned Training -->
+    <string name="assigned_training_header">CURRENT ASSIGNED TRAINING</string>
+    <string name="btn_continue_training">Continue Training</string>
+
+    <!-- Main Navigation Action Buttons -->
+    <string name="action_continue_training">Continue Training</string>
+    <string name="action_ar_training">AR Safety Practice</string>
+    <string name="action_assessments">AR Competency Exam</string>
+    <string name="action_certificates">My Safety Pass</string>
+    <string name="action_history">Training History</string>
+    <string name="action_supervisor_scan">Verify Worker QR</string>
+    <string name="action_profile">Worker Profile</string>
+    <string name="action_help">Emergency &amp; Help</string>
+
+    <!-- Sectors -->
+    <string name="sector_coal_mining">Coal Mining Safety (DGMS)</string>
+    <string name="sector_coal_desc">Underground roof strata, methane detection, and conveyor safety for Dhanbad-Jharia belt.</string>
+    <string name="sector_steel_mfg">Steel &amp; Metallurgy</string>
+    <string name="sector_steel_desc">Blast furnace zones, molten metal splash protection, overhead cranes for Jamshedpur-Bokaro.</string>
+    <string name="sector_mica_proc">Mica Processing &amp; Quarrying</string>
+    <string name="sector_mica_desc">Silicosis prevention, respirable dust mitigation, and bench stability for Koderma-Giridih.</string>
+
+    <!-- AR Training & Simulation -->
+    <string name="ar_loading">Initializing ARCore Session…</string>
+    <string name="ar_plane_search">Scan floor or surface to anchor industrial safety simulation…</string>
+    <string name="ar_tap_to_place">Tap on detected grid to spawn hazard scenario</string>
+    <string name="ar_hazard_detected">HAZARD IDENTIFIED</string>
+    <string name="ar_sop_action">REQUIRED SOP ACTION</string>
+    <string name="ar_inspect_hazard">Inspect Hazard</string>
+    <string name="ar_neutralize_hazard">Mitigate / Apply Control</string>
+
+    <!-- Assessment -->
+    <string name="assessment_title">AR Practical Competency Exam</string>
+    <string name="assessment_timer">Time Remaining:</string>
+    <string name="assessment_score">Score:</string>
+    <string name="assessment_submit">Submit Evaluation</string>
+    <string name="assessment_pass">EXAM PASSED (Qualified for Field Work)</string>
+    <string name="assessment_fail">FAILED (Retraining Mandatory)</string>
+
+    <!-- QR & Certification -->
+    <string name="cert_title">Digital Industrial Safety Pass</string>
+    <string name="cert_qr_label">Scan with SafetyAR Supervisor Scanner</string>
+    <string name="cert_validity">Valid for 365 Days</string>
+    <string name="scan_qr_title">Supervisor QR Verification</string>
+    <string name="scan_qr_instruction">Align Worker Safety QR Code within frame</string>
+    <string name="cert_verified">PASS VERIFIED - WORKER AUTHORIZED</string>
+    <string name="cert_invalid">INVALID OR EXPIRED SAFETY PASS</string>
+
+    <!-- 4 Required Verification States -->
+    <string name="status_valid">VALID</string>
+    <string name="status_expired">EXPIRED</string>
+    <string name="status_revoked">REVOKED</string>
+    <string name="status_not_found">NOT FOUND</string>
+    <string name="status_valid_msg">PASS VERIFIED - WORKER AUTHORIZED</string>
+    <string name="status_expired_msg">EXPIRED PASS - RECERTIFICATION REQUIRED</string>
+    <string name="status_revoked_msg">ACCESS PROHIBITED - CERTIFICATE REVOKED</string>
+    <string name="status_not_found_msg">NOT FOUND - UNREGISTERED OR COUNTERFEIT PASS</string>
+
+    <!-- Certificate Labels -->
+    <string name="cert_worker_name">Worker Name</string>
+    <string name="cert_worker_id">Worker ID</string>
+    <string name="cert_organization">Organization</string>
+    <string name="cert_training_module">Training Module</string>
+    <string name="cert_score">Score</string>
+    <string name="cert_issue_date">Issue Date</string>
+    <string name="cert_validity_date">Validity Date</string>
+    <string name="cert_id_label">Certificate ID</string>
+    <string name="cert_export_image">Export Certificate Image (PNG)</string>
+    <string name="cert_share_text">Share Credential Details (Text)</string>
+
+    <!-- Training History -->
+    <string name="history_title">Audit &amp; Training History</string>
+    <string name="history_subtitle">Verified field records synchronized with Central DGMS portal</string>
+    <string name="history_empty">No prior evaluations on record. Complete an AR Assessment to generate records.</string>
+
+    <!-- Help & Emergency SOS -->
+    <string name="help_title">Emergency Protocols &amp; Help</string>
+    <string name="help_subtitle">Immediate industrial contact lines &amp; DGMS guidelines</string>
+    <string name="sos_emergency_banner">IN CASE OF MINE/PLANT ACCIDENT: EVACUATE IMMEDIATELY</string>
+    <string name="sos_dgms_hotline">DGMS Emergency Helpline: 1800-345-6677</string>
+    <string name="sos_dhanbad_rescue">Dhanbad Mine Rescue Station: 0326-2202020</string>
+    <string name="sos_jamshedpur_safety">Jamshedpur Industrial Safety HQ: 0657-2431234</string>
+    <string name="sos_koderma_health">Koderma Occupational Health Centre: 06534-222100</string>
+
+    <!-- Offline Sync -->
+    <string name="sync_status_synced">Database Synchronized with Central DGMS Portal</string>
+    <string name="sync_status_pending">Local Records Pending Sync</string>
+    <string name="sync_button">Force Immediate Sync</string>
+
+    <!-- SIH 2026 Primary Demo: Fire & Explosion Module -->
+    <string name="sih_demo_badge">SIH 2026 PRIMARY DEMO</string>
+    <string name="sih_demo_title">AR Module 1: Fire &amp; Explosion Response</string>
+    <string name="sih_demo_desc">10-step sequential simulation: thermal flames, emergency alarm, PASS extinguisher method, and safe muster evacuation.</string>
+    <string name="btn_sih_learning">11-Step Learning Flow \u2192</string>
+    <string name="btn_sih_direct_ar">\u26a1 Direct AR Simulation</string>
+
+    <!-- Reusable Assessment Engine (Section 11) -->
+    <string name="engine_exam_title">Industrial Safety Competency Exam</string>
+    <string name="engine_exam_passed">COMPETENCY EXAM PASSED</string>
+    <string name="engine_exam_failed">COMPETENCY EXAM FAILED</string>
+    <string name="engine_critical_violation_title">CRITICAL SAFETY ZERO-TOLERANCE RULE</string>
+    <string name="engine_review_training">Review Training Lessons</string>
+    <string name="engine_retry_assessment">Retry Assessment</string>
+    <string name="engine_weak_areas_title">IDENTIFIED WEAK AREAS &amp; REMEDIATION</string>
+
+    <!-- SIH 2026 Primary Demo: AR Module 2 Gas Leak & Confined Space -->
+    <string name="sih_demo2_badge">SIH 2026 PRIMARY DEMO 2</string>
+    <string name="sih_demo2_title">AR Module 2: Gas Leak &amp; Confined Space</string>
+    <string name="sih_demo2_desc">10-step sequential simulation: 4-gas testing, SCBA PPE selection, standby buddy protocol, signed entry permit, and evacuation.</string>
+    <string name="btn_sih_demo2_launch">\u26a1 Launch Gas &amp; Confined Space AR \u2192</string>
+    <string name="btn_back">Back</string>
+    <string name="nav_sync">Sync</string>
+</resources>

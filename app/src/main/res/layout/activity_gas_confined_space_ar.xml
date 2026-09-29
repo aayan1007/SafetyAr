@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- Live Camera Container -->
+    <FrameLayout
+        android:id="@+id/gasCameraContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Spatial Interactive AR Overlay View -->
+    <com.safetyar.app.ar.GasConfinedSpaceOverlayView
+        android:id="@+id/gasOverlayView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Top HUD: Progress, Score, Feedback & AR Banner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="12dp"
+        android:background="#D90B0F19">
+
+        <!-- Non-AR Fallback Notification Banner -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardArFallbackBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="#2000E5FF"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/hazard_blue"
+            app:strokeWidth="1dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_ar_cube"
+                    app:tint="@color/hazard_blue" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="Interactive Spatial Simulation Mode Active."
+                    android:textColor="@color/text_on_dark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Header Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnBackFromGasAr"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_check_circle"
+                app:tint="@color/text_on_dark"
+                android:contentDescription="Back" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GAS LEAK &amp; CONFINED SPACE"
+                    android:textColor="@color/hazard_blue"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:id="@+id/tvGasCurrentStep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Step 1 of 10: Identify Gas Leak Source"
+                    android:textColor="@color/text_on_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvGasScoreBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_certified"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="SCORE: 100"
+                android:textColor="@color/hazard_green"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Immediate Real-Time Feedback Banner -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGasFeedbackBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/surface_card"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/safety_primary"
+            app:strokeWidth="1.5dp">
+
+            <TextView
+                android:id="@+id/tvGasImmediateFeedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp"
+                android:text="Pan camera to locate the active gas leak flange."
+                android:textColor="@color/text_on_dark"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Bottom Controls & Action Panel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
+        android:background="#E60B0F19">
+
+        <!-- PPE Selection Container (Step 5) -->
+        <LinearLayout
+            android:id="@+id/layoutGasPpeSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MANDATORY CONFINED SPACE PPE:"
+                android:textColor="@color/safety_primary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectDustMask"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="N95 Dust Mask"
+                    android:textColor="@color/text_on_dark_muted"
+                    android:textSize="12sp"
+                    app:strokeColor="@color/border_subtle"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectScba"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="SCBA + Harness \u2713"
+                    android:textColor="@color/safety_on_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/hazard_green"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Buddy System Selection Container (Step 7) -->
+        <LinearLayout
+            android:id="@+id/layoutGasBuddySelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUDDY-SYSTEM VERIFICATION:"
+                android:textColor="@color/safety_primary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSoloEntry"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="Enter Alone (Unsafe)"
+                    android:textColor="@color/text_on_dark_muted"
+                    android:textSize="12sp"
+                    app:strokeColor="@color/border_subtle"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerifyBuddy"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:text="Station Standby Buddy \u2713"
+                    android:textColor="@color/safety_on_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/safety_primary"
+                    app:cornerRadius="12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Contextual Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGasContextualAction"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="1. Tap Gas Leak Flange to Identify"
+            android:textColor="@color/safety_on_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/safety_primary"
+            app:cornerRadius="14dp" />
+
+        <!-- Scenario Reset / Retry Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRestartGasScenario"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:text="\u21BB Restart Scenario"
+            android:textColor="@color/text_on_dark_muted"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

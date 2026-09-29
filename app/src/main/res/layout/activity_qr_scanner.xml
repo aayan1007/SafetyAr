@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- ZXing Embedded Camera Barcode Scanner -->
+    <com.journeyapps.barcodescanner.DecoratedBarcodeView
+        android:id="@+id/barcodeScannerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Top Supervisor HUD Panel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:background="#D90F172A"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnBackFromScanner"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_check_circle"
+                app:tint="@color/text_on_dark"
+                android:contentDescription="@string/btn_back" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scan_qr_title"
+                    android:textColor="@color/text_on_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Offline DGMS Cryptographic Authentication"
+                    android:textColor="@color/text_on_dark_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- SIH Presentation Demo Quick-Test Chips -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="SIH DEMO QUICK TEST (4 REQUIRED STATES):"
+            android:textColor="@color/safety_primary"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSimValid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="VALID"
+                    android:textSize="11sp"
+                    android:textColor="@color/safety_on_primary"
+                    app:backgroundTint="@color/hazard_green"
+                    app:cornerRadius="8dp"
+                    android:layout_marginEnd="6dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSimExpired"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="EXPIRED"
+                    android:textSize="11sp"
+                    android:textColor="#000000"
+                    app:backgroundTint="@color/hazard_yellow"
+                    app:cornerRadius="8dp"
+                    android:layout_marginEnd="6dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSimRevoked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="REVOKED"
+                    android:textSize="11sp"
+                    android:textColor="@color/safety_on_primary"
+                    app:backgroundTint="@color/hazard_red"
+                    app:cornerRadius="8dp"
+                    android:layout_marginEnd="6dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSimNotFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="NOT FOUND"
+                    android:textSize="11sp"
+                    android:textColor="@color/text_on_dark"
+                    app:backgroundTint="#475569"
+                    app:cornerRadius="8dp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Manual Certificate ID Search Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/etManualCertId"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/badge_certified"
+                android:hint="Search ID: e.g. SAFETYAR-JH-2026-000001"
+                android:textColorHint="#94A3B8"
+                android:textColor="@color/text_on_dark"
+                android:textSize="12sp"
+                android:paddingHorizontal="10dp"
+                android:imeOptions="actionSearch"
+                android:inputType="textCapCharacters" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerifyManualId"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:text="Verify"
+                android:textSize="12sp"
+                android:textColor="@color/safety_on_primary"
+                app:backgroundTint="@color/safety_primary"
+                app:cornerRadius="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/scan_qr_instruction"
+            android:textColor="@color/text_on_dark_muted"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Bottom Result Card (Renders evaluation for VALID, EXPIRED, REVOKED, NOT FOUND) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardScanResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="14dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/surface_card"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="10dp"
+        app:strokeColor="@color/hazard_green"
+        app:strokeWidth="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Dynamic 4-State Header Badge -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvScanResultBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/badge_certified"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="VALID"
+                    android:textColor="@color/hazard_green"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvScanResultCertId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="SAFETYAR-JH-2026-000001"
+                    android:textColor="@color/text_on_dark_muted"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <!-- Worker Identity -->
+            <TextView
+                android:id="@+id/tvScanWorkerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Ramesh Soren (WRK-JH-COAL-0891)"
+                android:textColor="@color/text_on_dark"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Enterprise / Organization -->
+            <TextView
+                android:id="@+id/tvScanOrganization"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Bharat Coking Coal Limited (BCCL)"
+                android:textColor="@color/safety_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Module & Score -->
+            <TextView
+                android:id="@+id/tvScanModuleAndScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Module: Fire &amp; Explosion Response | Score: 94%"
+                android:textColor="@color/text_on_dark"
+                android:textSize="12sp" />
+
+            <!-- Validity Dates -->
+            <TextView
+                android:id="@+id/tvScanDates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Issued: 01 Sep 2026 | Valid Until: 01 Sep 2027"
+                android:textColor="@color/text_on_dark_muted"
+                android:textSize="11sp" />
+
+            <!-- Status Explanation Message -->
+            <TextView
+                android:id="@+id/tvScanCertMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="AUTHENTICATED: DGMS-Compliant Safety Pass."
+                android:textColor="@color/text_on_dark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Regulatory Note / Violation Reason -->
+            <TextView
+                android:id="@+id/tvScanComplianceReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Cryptographic signature verified. Worker authorized for underground coal seam operation."
+                android:textColor="@color/text_on_dark_muted"
+                android:textSize="11sp" />
+
+            <!-- Bottom Actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewFullPass"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="View Pass"
+                    android:textSize="12sp"
+                    android:textColor="@color/safety_on_primary"
+                    app:backgroundTint="@color/safety_primary"
+                    app:cornerRadius="10dp"
+                    android:layout_marginEnd="6dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScanAgain"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:text="Scan Again"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_on_dark"
+                    app:strokeColor="@color/text_on_dark_muted"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="10dp"
+                    android:layout_marginStart="6dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>
